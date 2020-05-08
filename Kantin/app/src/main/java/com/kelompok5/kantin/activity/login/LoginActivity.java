@@ -1,4 +1,4 @@
-package com.kelompok5.kantin;
+package com.kelompok5.kantin.activity.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.Spanned;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,16 +14,20 @@ import android.widget.TextView;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
+import com.kelompok5.kantin.MainActivity;
+import com.kelompok5.kantin.R;
+import com.kelompok5.kantin.activity.beranda.Beranda;
+import com.kelompok5.kantin.helper.SqliteHelper;
 
 public class LoginActivity extends AppCompatActivity {
 
     //Declaration EditTexts
-    EditText editTextEmail;
-    EditText editTextPassword;
+    EditText editTextNim;
+    EditText editTextSandi;
 
     //Declaration TextInputLayout
-    TextInputLayout textInputLayoutEmail;
-    TextInputLayout textInputLayoutPassword;
+    TextInputLayout textInputLayoutNim;
+    TextInputLayout textInputLayoutSandi;
 
     //Declaration Button
     Button buttonLogin;
@@ -47,18 +52,20 @@ public class LoginActivity extends AppCompatActivity {
                 if (validate()) {
 
                     //Get values from EditText fields
-                    String Email = editTextEmail.getText().toString();
-                    String Password = editTextPassword.getText().toString();
+                    String Nim = editTextNim.getText().toString();
+                    String Sandi = editTextSandi.getText().toString();
 
                     //Authenticate user
-                    User currentUser = sqliteHelper.Authenticate(new User(null, null, Email, Password));
+                    boolean currentUser = sqliteHelper.Authenticate(new Login(Nim, Sandi));
+
+                    Log.d("Auth", String.valueOf(currentUser));
 
                     //Check Authentication is successful or not
-                    if (currentUser != null) {
+                    if (currentUser) {
                         Snackbar.make(buttonLogin, "Successfully Logged in!", Snackbar.LENGTH_LONG).show();
 
                         //User Logged in Successfully Launch You home screen activity
-                        Intent intent=new Intent(LoginActivity.this,MainActivity.class);
+                        Intent intent=new Intent(LoginActivity.this, Beranda.class);
                         startActivity(intent);
                         finish();
 
@@ -91,10 +98,10 @@ public class LoginActivity extends AppCompatActivity {
 
     //this method is used to connect XML views to its Objects
     private void initViews() {
-        editTextEmail = (EditText) findViewById(R.id.editTextEmail);
-        editTextPassword = (EditText) findViewById(R.id.editTextPassword);
-        textInputLayoutEmail = (TextInputLayout) findViewById(R.id.textInputLayoutEmail);
-        textInputLayoutPassword = (TextInputLayout) findViewById(R.id.textInputLayoutPassword);
+        editTextNim = (EditText) findViewById(R.id.editTextNim);
+        editTextSandi = (EditText) findViewById(R.id.editTextSandi);
+        textInputLayoutNim = (TextInputLayout) findViewById(R.id.textInputLayoutNim);
+        textInputLayoutSandi = (TextInputLayout) findViewById(R.id.textInputLayoutSandi);
         buttonLogin = (Button) findViewById(R.id.buttonLogin);
 
     }
@@ -116,29 +123,29 @@ public class LoginActivity extends AppCompatActivity {
         boolean valid = false;
 
         //Get values from EditText fields
-        String Email = editTextEmail.getText().toString();
-        String Password = editTextPassword.getText().toString();
+        String Email = editTextNim.getText().toString();
+        String Password = editTextSandi.getText().toString();
 
         //Handling validation for Email field
-        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(Email).matches()) {
-            valid = false;
-            textInputLayoutEmail.setError("Please enter valid email!");
-        } else {
-            valid = true;
-            textInputLayoutEmail.setError(null);
-        }
+//        if (!android.util.Patterns.U.matches()) {
+//            valid = false;
+//            textInputLayoutNim.setError("Please enter valid email!");
+//        } else {
+//            valid = true;
+//            textInputLayoutSandi.setError(null);
+//        }
 
         //Handling validation for Password field
         if (Password.isEmpty()) {
             valid = false;
-            textInputLayoutPassword.setError("Please enter valid password!");
+            textInputLayoutSandi.setError("Please enter valid password!");
         } else {
-            if (Password.length() > 5) {
+            if (Password.length() > 4) {
                 valid = true;
-                textInputLayoutPassword.setError(null);
+                textInputLayoutSandi.setError(null);
             } else {
                 valid = false;
-                textInputLayoutPassword.setError("Password is to short!");
+                textInputLayoutSandi.setError("Password is to short!");
             }
         }
 

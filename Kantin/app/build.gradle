@@ -29,5 +29,10 @@ dependencies {
 
     //import android design
     implementation 'com.android.support:design:28.0.0'
-    implementation 'com.android.support:design:28.0.0'
+    //import grid
+    implementation "androidx.gridlayout:gridlayout:1.0.0"
+    //import card
+    implementation 'com.android.support:cardview-v7:28.0.0'
+    //import circle image
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
 }
