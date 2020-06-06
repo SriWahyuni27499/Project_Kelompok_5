@@ -16,6 +16,14 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize"/>
         <activity
+            android:name=".DaftarActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".ViewPagerActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
             android:name=".HomeActivity"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -24,10 +32,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".DaftarActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize"/>
     </application>
 
 </manifest>

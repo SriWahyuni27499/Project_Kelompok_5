@@ -1,6 +1,7 @@
 package com.uigitdev.loginscreen;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
@@ -75,6 +76,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (ID.getText().length() > 0 && password.getText().length() > 0) {
                     Toast.makeText(LoginActivity.this, ID.getText() + " " + password.getText(), Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(LoginActivity.this, ViewPagerActivity.class));
                 }
             }
         });

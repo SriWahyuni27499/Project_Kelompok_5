@@ -10,9 +10,9 @@ import android.widget.RelativeLayout;
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
-import com.uigitdev.customviewpagerslider.R;
-import com.uigitdev.customviewpagerslider.model.ItemObj;
-import com.uigitdev.customviewpagerslider.viewholder.ItemView;
+import com.uigitdev.loginscreen.R;
+import com.uigitdev.loginscreen.model.ItemObj;
+import com.uigitdev.loginscreen.viewholder.ItemView;
 
 import java.util.ArrayList;
 

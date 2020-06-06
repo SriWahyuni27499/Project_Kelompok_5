@@ -21,7 +21,7 @@
             android:layout_marginTop="25dp"
             android:layout_marginRight="15dp"
             android:layout_marginBottom="25dp"
-            app:cardBackgroundColor="@color/colorCardBackgroundview"
+            app:cardBackgroundColor="@color/colorCardBackgroundView"
             app:cardCornerRadius="5dp">
 
             <RelativeLayout
@@ -35,11 +35,12 @@
                     android:layout_height="300dp">
 
                     <ImageView
-                        android:id="@+id/backgrounImage"
+                        android:id="@+id/backgroundImage"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@color/colorCardBackgroundview"
-                        android:scaleType="centerCrop" />
+                        android:background="@color/colorCardBackgroundView"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="@string/todo" />
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -52,7 +53,7 @@
                         android:layout_height="200dp"
                         android:layout_centerHorizontal="true"
                         android:layout_centerVertical="true"
-                        app:cardBackgroundColor="@color/colorCardBackgroundview"
+                        app:cardBackgroundColor="@color/colorCardBackgroundView"
                         app:cardCornerRadius="5dp"
                         app:cardElevation="5dp">
 
@@ -63,7 +64,8 @@
                             <ImageView
                                 android:id="@+id/foregroundImage"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent" />
+                                android:layout_height="match_parent"
+                                android:contentDescription="@string/todo" />
 
                         </RelativeLayout>
 
@@ -83,7 +85,7 @@
                     android:ellipsize="end"
                     android:maxLines="2"
                     android:textColor="@color/colorWhite"
-                    android:textSize="30dp"
+                    android:textSize="30sp"
                     android:textStyle="bold" />
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton

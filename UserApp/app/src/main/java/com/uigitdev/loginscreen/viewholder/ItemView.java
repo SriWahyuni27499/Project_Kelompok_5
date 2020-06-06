@@ -11,8 +11,8 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.squareup.picasso.Picasso;
-import com.uigitdev.customviewpagerslider.R;
-import com.uigitdev.customviewpagerslider.model.ItemObj;
+import com.uigitdev.loginscreen.R;
+import com.uigitdev.loginscreen.model.ItemObj;
 
 import java.util.ArrayList;
 
@@ -49,7 +49,7 @@ public class ItemView {
     }
 
     private void setType(View view) {
-        backgrounImage = view.findViewById(R.id.backgrounImage);
+        backgrounImage = view.findViewById(R.id.backgroundImage);
         foregroundImage = view.findViewById(R.id.foregroundImage);
         item_title = view.findViewById(R.id.item_title);
         item_parent = view.findViewById(R.id.item_parent);

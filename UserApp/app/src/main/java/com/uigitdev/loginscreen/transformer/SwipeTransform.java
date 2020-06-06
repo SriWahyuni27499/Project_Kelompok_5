@@ -7,7 +7,7 @@ import androidx.cardview.widget.CardView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.uigitdev.customviewpagerslider.R;
+import com.uigitdev.loginscreen.R;
 
 public class SwipeTransform implements ViewPager.PageTransformer {
     private TextView item_title;

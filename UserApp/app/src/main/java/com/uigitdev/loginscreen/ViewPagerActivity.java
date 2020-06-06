@@ -9,6 +9,10 @@ import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
+import com.uigitdev.loginscreen.adapter.ViewPagerAdapter;
+import com.uigitdev.loginscreen.model.ItemObj;
+import com.uigitdev.loginscreen.transformer.SwipeTransform;
+import com.uigitdev.loginscreen.viewholder.ItemView;
 
 import java.util.ArrayList;
 

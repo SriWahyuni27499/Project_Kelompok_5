@@ -4,7 +4,7 @@
     android:id="@+id/parent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccentview"
+    android:background="@color/colorAccentView"
     tools:context=".ViewPagerActivity">
 
     <TextView
@@ -15,8 +15,8 @@
         android:layout_marginTop="25dp"
         android:ellipsize="end"
         android:lines="1"
-        android:text="Daftar Kedai"
-        android:textColor="@color/colorWhiteview"
+        android:text="@string/kedai"
+        android:textColor="@color/colorWhiteView"
         android:textSize="35dp"
         android:textStyle="bold"
         tools:ignore="SpUsage" />
