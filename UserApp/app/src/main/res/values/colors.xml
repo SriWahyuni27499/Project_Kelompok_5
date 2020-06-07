@@ -14,4 +14,15 @@
     <color name="colorWhiteView">#FFFFFF</color>
     <color name="colorCardBackgroundView">#031219</color>
 
+<!--    menu -->
+    <color name="colorPrimaryMenu">#C62828</color>
+    <color name="colorPrimaryDarkMenu">#b71c1c</color>
+    <color name="colorAccentMenu">#ffffff</color>
+    <color name="ratingLowMenu">#D60000</color>
+    <color name="ratingMediumMenu">#FFA500</color>
+    <color name="ratingHighMenu">#00A300</color>
+    <color name="whiteMenu">#ffffff</color>
+    <color name="greyMenu">#eeeeee</color>
+    <color name="grey_textMenu">#4c4c4d</color>
+
 </resources>

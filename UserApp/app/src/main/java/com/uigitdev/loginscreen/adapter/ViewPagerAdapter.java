@@ -12,7 +12,7 @@ import androidx.viewpager.widget.PagerAdapter;
 
 import com.uigitdev.loginscreen.R;
 import com.uigitdev.loginscreen.model.ItemObj;
-import com.uigitdev.loginscreen.viewholder.ItemView;
+import com.uigitdev.loginscreen.viewmodel.ItemView;
 
 import java.util.ArrayList;
 

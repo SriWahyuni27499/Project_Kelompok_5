@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.uigitdev.loginscreen.akun.DaftarActivity;
+import com.uigitdev.loginscreen.akun.LoginActivity;
 
 public class HomeActivity extends AppCompatActivity {
     RelativeLayout login_button;

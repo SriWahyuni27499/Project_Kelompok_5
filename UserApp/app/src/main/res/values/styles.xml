@@ -8,4 +8,25 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppThemeMenu" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimaryMenu</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkMenu</item>
+        <item name="colorAccent">@color/grey_textMenu</item>
+    </style>
+    <style name="AppTheme.Base" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimaryMenu</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkMenu</item>
+        <item name="colorAccent">@color/grey_textMenu</item>
+    </style>
+
+    <style name="AppTheme.Launcher" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimaryMenu</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkMenu</item>
+        <item name="colorAccent">@color/grey_textMenu</item>
+        <item name="android:windowBackground">@layout/launcher</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
 </resources>

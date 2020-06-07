@@ -1,4 +1,4 @@
-package com.uigitdev.loginscreen;
+package com.uigitdev.loginscreen.akun;
 
 import android.annotation.SuppressLint;
 import android.graphics.Color;
@@ -9,11 +9,12 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+
+import com.uigitdev.loginscreen.R;
 
 public class DaftarActivity extends AppCompatActivity {
     private EditText nama, ID, password;

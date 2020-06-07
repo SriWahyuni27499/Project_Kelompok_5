@@ -1,4 +1,4 @@
-package com.uigitdev.loginscreen.viewholder;
+package com.uigitdev.loginscreen.viewmodel;
 
 import android.content.Context;
 import android.content.res.ColorStateList;

@@ -1,4 +1,4 @@
-package com.uigitdev.loginscreen;
+package com.uigitdev.loginscreen.akun;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -15,6 +15,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+
+import com.uigitdev.loginscreen.R;
+import com.uigitdev.loginscreen.ViewPagerActivity;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText ID, password;
