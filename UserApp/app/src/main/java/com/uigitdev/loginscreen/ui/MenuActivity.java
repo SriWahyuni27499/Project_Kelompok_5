@@ -62,7 +62,7 @@ public class MenuActivity extends AppCompatActivity implements java.util.Observe
         toolbar.setTitle(R.string.app_name);
         setSupportActionBar(toolbar);
 
-        foodViewModel = ViewModelProviders.of(this).get(FoodViewModel.class);
+        foodViewModel = new ViewModelProvider (this).get(FoodViewModel.class);
         foodList = findViewById(R.id.food_list);
         tInfo = findViewById(R.id.t_loading);
         infoImage = findViewById(R.id.i_loading);
@@ -162,11 +162,11 @@ public class MenuActivity extends AppCompatActivity implements java.util.Observe
                 quantity = quantity+cartItem.getQuantity();
             }
             tCartQuantity.setText(String.valueOf(quantity));
-            tTotalCost.setText(getString(R.string.rupee_symbol)+ String.valueOf(cost));
+            tTotalCost.setText(getString(R.string.rupiah_simbol)+ String.valueOf(cost));
         }else{
             cartView.setVisibility(View.GONE);
             tCartQuantity.setText("0");
-            tTotalCost.setText(getString(R.string.rupee_symbol)+"0");
+            tTotalCost.setText(getString(R.string.rupiah_simbol)+"0");
         }
     }
 
