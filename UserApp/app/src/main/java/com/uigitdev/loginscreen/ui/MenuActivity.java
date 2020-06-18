@@ -172,7 +172,7 @@ public class MenuActivity extends AppCompatActivity implements java.util.Observe
 
     private void subscribeToFoodObserver() {
         if(!foodViewModel.getFoodDetailsMutableLiveData().hasObservers()) {
-            foodViewModel.getFoodDetailsMutableLiveData().observe(HomeScreenActivity.this, foodMenuObserver);
+            foodViewModel.getFoodDetailsMutableLiveData().observe(MenuActivity.this, foodMenuObserver);
         }
         if(!foodViewModel.getCartItemsLiveData().hasObservers()){
             foodViewModel.getCartItemsLiveData().observe(this,cartObserver);
