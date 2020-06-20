@@ -38,16 +38,19 @@
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:orientation="vertical">
+
                         <LinearLayout
+                            android:id="@+id/profilBtn"
                             android:layout_width="match_parent"
                             android:layout_height="130dp"
-                            android:gravity="center"
-                            android:background="@color/green">
+                            android:background="@color/green"
+                            android:gravity="center">
+
                             <ImageView
                                 android:layout_width="64dp"
                                 android:layout_height="64dp"
-                                android:src="@drawable/user"
-                                android:padding="10dp"/>
+                                android:padding="10dp"
+                                android:src="@drawable/user" />
                         </LinearLayout>
 
                         <TextView
@@ -69,16 +72,18 @@
                     android:layout_height="190dp"
                     android:layout_margin="10dp"
                     android:padding="0dp">
+
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_width="154dp"
+                        android:layout_height="175dp"
                         android:gravity="center"
                         android:orientation="vertical">
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="130dp"
-                            android:gravity="center"
-                            android:background="@color/purple">
+                            android:background="@color/purple"
+                            android:gravity="center">
 
                             <ImageView
                                 android:layout_width="64dp"
@@ -182,5 +187,16 @@
 
         </LinearLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginBottom="200dp"
+        android:text="logout" />
 </RelativeLayout>
 

@@ -10,6 +10,7 @@
     <string name="telepon">No HP</string>
     <string name="daftar">Daftar</string>
     <string name="kembali">Kembali</string>
+    <string name="title_activity_map">Map</string>
 
     //disini beranda
 </resources>

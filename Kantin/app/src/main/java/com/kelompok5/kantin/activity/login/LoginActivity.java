@@ -1,8 +1,10 @@
 package com.kelompok5.kantin.activity.login;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.Spanned;
@@ -12,8 +14,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.kelompok5.kantin.MainActivity;
 import com.kelompok5.kantin.R;
 import com.kelompok5.kantin.activity.beranda.Beranda;
@@ -35,21 +41,67 @@ public class LoginActivity extends AppCompatActivity {
     //Declaration SqliteHelper
     SqliteHelper sqliteHelper;
 
+    boolean isUserExist = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        //helper
         sqliteHelper = new SqliteHelper(this);
         initCreateAccountTextView();
         initViews();
 
-        //set click event of login button
+        /*
+            Start
+            Buat Ambil preference user
+         */
+
+        SharedPreferences spf = getSharedPreferences("login", MODE_PRIVATE);
+        boolean isLogin = spf.getBoolean("isLogin", false);
+
+        /*
+            End
+            Buat Ambil preference user
+         */
+
+        //arahin kemana klo udah di sharepreference
+        if(isLogin){
+            Intent ints = new Intent(this, Beranda.class);
+            startActivity(ints);
+            this.finish();
+        }
+
+        //inputan dah kelar setting buttonya(login edition)
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 //Check user input is correct or not
                 if (validate()) {
+
+                    FirebaseFirestore fdb = FirebaseFirestore.getInstance();
+
+
+
+                    fdb.collection("usersend")
+                            .whereEqualTo("nim_nip", editTextNim.getText().toString())
+                            .whereEqualTo("kata_sandi", editTextSandi.getText().toString())
+                            .get()
+                            .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                                @Override
+                                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                                    isUserExist = true;
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    isUserExist = false;
+                                }
+                            });
+
+
 
                     //Get values from EditText fields
                     String Nim = editTextNim.getText().toString();
@@ -61,8 +113,18 @@ public class LoginActivity extends AppCompatActivity {
                     Log.d("Auth", String.valueOf(currentUser));
 
                     //Check Authentication is successful or not
-                    if (currentUser) {
+                    if (isUserExist) {
                         Snackbar.make(buttonLogin, "Successfully Logged in!", Snackbar.LENGTH_LONG).show();
+
+                        //Sharedpref
+                        SharedPreferences login = getSharedPreferences("login", MODE_PRIVATE);
+                        SharedPreferences.Editor jalankan = login.edit();
+
+                        jalankan.putBoolean("isLogin", true);
+
+                        jalankan.putString("username", Nim);
+
+                        jalankan.commit();
 
                         //User Logged in Successfully Launch You home screen activity
                         Intent intent=new Intent(LoginActivity.this, Beranda.class);
@@ -78,7 +140,6 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
-
 
     }
 
@@ -123,7 +184,7 @@ public class LoginActivity extends AppCompatActivity {
         boolean valid = false;
 
         //Get values from EditText fields
-        String Email = editTextNim.getText().toString();
+        String nim = editTextNim.getText().toString();
         String Password = editTextSandi.getText().toString();
 
         //Handling validation for Email field
@@ -140,7 +201,7 @@ public class LoginActivity extends AppCompatActivity {
             valid = false;
             textInputLayoutSandi.setError("Please enter valid password!");
         } else {
-            if (Password.length() > 4) {
+            if (Password.length() >1) {
                 valid = true;
                 textInputLayoutSandi.setError(null);
             } else {

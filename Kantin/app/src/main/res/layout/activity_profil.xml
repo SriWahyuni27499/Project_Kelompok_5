@@ -23,11 +23,11 @@
                 android:layout_height="150dp"
                 android:src="@drawable/user"/>
             <TextView
+                android:id="@+id/nim"
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Refandra B. M. A."
                 android:textColor="#fff"
                 android:textStyle="bold"
                 android:textSize="21sp"/>
@@ -42,72 +42,74 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:weightSum="3">
-                <LinearLayout
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="match_parent">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Rating"
-                        android:textSize="20sp"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textStyle="bold"
-                        android:textSize="20sp"
-                        android:paddingTop="10dp"
-                        android:textColor="@color/startblue"/>
+<!--                <LinearLayout-->
+<!--                    android:gravity="center"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:layout_height="match_parent">-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Rating"-->
+<!--                        android:textSize="20sp"-->
+<!--                        />-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text=""-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textSize="20sp"-->
+<!--                        android:paddingTop="10dp"-->
+<!--                        android:textColor="@color/startblue"/>-->
 
-                </LinearLayout>
+<!--                </LinearLayout>-->
                 <LinearLayout
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:layout_height="match_parent">
+                    android:gravity="center"
+                    android:orientation="vertical">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
                         android:text="Pencapaian"
-                        android:textSize="20sp"
-                        />
+                        android:textSize="20sp" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:paddingTop="10dp"
                         android:text="73 Pesanan"
-                        android:textStyle="bold"
+                        android:textColor="@color/startblue"
                         android:textSize="20sp"
-                        android:paddingTop="10dp"
-                        android:textColor="@color/startblue"/>
+                        android:textStyle="bold" />
 
                 </LinearLayout>
-                <LinearLayout
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="match_parent">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Dompet"
-                        android:textSize="20sp"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Rp. 1000"
-                        android:textStyle="bold"
-                        android:textSize="20sp"
-                        android:paddingTop="10dp"
-                        android:textColor="@color/startblue"/>
+                <!--                <LinearLayout-->
+<!--                    android:gravity="center"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:layout_height="match_parent">-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Dompet"-->
+<!--                        android:textSize="20sp"-->
+<!--                        />-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Rp. 1000"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textSize="20sp"-->
+<!--                        android:paddingTop="10dp"-->
+<!--                        android:textColor="@color/startblue"/>-->
 
-                </LinearLayout>
+<!--                </LinearLayout>-->
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
@@ -127,17 +129,29 @@
             <ImageView
                 android:layout_width="36dp"
                 android:layout_height="36dp"
-                android:src="@drawable/star"/>
+                android:src="@drawable/pople"/>
+
             <TextView
-                android:textStyle="bold"
-                android:layout_gravity="center_vertical"
+                android:id="@+id/nama"
+                android:hint="Nama Lengkap"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:paddingLeft="20dp"
-                android:text="Refandra Bramandika Miftahul Akhyar"/>
+                android:text=""
+                android:textStyle="bold" />
         </LinearLayout>
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp">
         <LinearLayout
-            android:layout_marginTop="25dp"
             android:orientation="horizontal"
             android:paddingLeft="25dp"
             android:layout_width="match_parent"
@@ -145,20 +159,25 @@
             <ImageView
                 android:layout_width="36dp"
                 android:layout_height="36dp"
-                android:src="@drawable/user"/>
-            <TextView
-                android:textStyle="bold"
+                android:src="@drawable/telepon"/>
 
-                android:layout_gravity="center_vertical"
+            <TextView
+                android:id="@+id/nohp"
+                android:hint="telepon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:paddingLeft="20dp"
-                android:text="03317812289"/>
+                android:text=""
+                android:textStyle="bold" />
         </LinearLayout>
+
+
 
     </LinearLayout>
 
     <Button
+        android:id="@+id/ubah"
         android:textColor="#fff"
         android:background="@color/purple"
         android:layout_marginTop="35dp"
@@ -166,5 +185,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Edit"/>
+
+    <Button
+        android:id="@+id/keluar"
+        android:textColor="#fff"
+        android:background="@color/purple"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Keluar"/>
 
 </LinearLayout>
