@@ -8,22 +8,28 @@
     android:background="@color/graylightProfil"
     android:orientation="vertical">
 
+    //iki soko atas sampek tengah
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="405dp">
+        //bagian atas foto bek username
         <LinearLayout
             android:background="@drawable/gradientbackground"
             android:layout_width="match_parent"
             android:layout_height="350dp"
             android:orientation="vertical">
+
+            //iki fotoe
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_marginTop="45dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:src="@drawable/user"/>
+
+            //iki jenneg username e
             <TextView
-                android:id="@+id/nim"
+                android:id="@+id/username"
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
@@ -31,7 +37,9 @@
                 android:textColor="#fff"
                 android:textStyle="bold"
                 android:textSize="21sp"/>
+
         </LinearLayout>
+        //iki gawe card seng pencapaaian
         <androidx.cardview.widget.CardView
             android:layout_width="400dp"
             android:layout_height="120dp"
@@ -42,28 +50,6 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:weightSum="3">
-<!--                <LinearLayout-->
-<!--                    android:gravity="center"-->
-<!--                    android:orientation="vertical"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:layout_height="match_parent">-->
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="Rating"-->
-<!--                        android:textSize="20sp"-->
-<!--                        />-->
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text=""-->
-<!--                        android:textStyle="bold"-->
-<!--                        android:textSize="20sp"-->
-<!--                        android:paddingTop="10dp"-->
-<!--                        android:textColor="@color/startblue"/>-->
-
-<!--                </LinearLayout>-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -71,6 +57,7 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
+                    //iki view tempat pencapaian
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -78,6 +65,7 @@
                         android:text="Pencapaian"
                         android:textSize="20sp" />
 
+                    //iki tulisan pencapaiaane piro
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -114,7 +102,7 @@
 
         </androidx.cardview.widget.CardView>
     </RelativeLayout>
-
+    //iki nama lengkap
     <LinearLayout
         android:layout_width="360dp"
         android:layout_height="wrap_content"
@@ -145,6 +133,7 @@
 
 
     </LinearLayout>
+    //iki alamate
     <LinearLayout
         android:layout_width="360dp"
         android:layout_height="wrap_content"
@@ -162,8 +151,8 @@
                 android:src="@drawable/telepon"/>
 
             <TextView
-                android:id="@+id/nohp"
-                android:hint="telepon"
+                android:id="@+id/alamat"
+                android:hint="Alamat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -175,7 +164,64 @@
 
 
     </LinearLayout>
+    //iki email
+    <LinearLayout
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:paddingLeft="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/telepon"/>
 
+            <TextView
+                android:id="@+id/email"
+                android:hint="Email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="20dp"
+                android:text=""
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+    //iki telepon
+    <LinearLayout
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:paddingLeft="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/telepon"/>
+
+            <TextView
+                android:id="@+id/notepon"
+                android:hint="Telepon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="20dp"
+                android:text=""
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+    //buton edit
     <Button
         android:id="@+id/ubah"
         android:textColor="#fff"
@@ -186,6 +232,7 @@
         android:layout_height="wrap_content"
         android:text="Edit"/>
 
+    //button kembai
     <Button
         android:id="@+id/keluar"
         android:textColor="#fff"

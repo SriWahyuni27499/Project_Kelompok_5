@@ -8,7 +8,35 @@
     android:background="@drawable/gradientbackground"
     android:orientation="vertical">
 
+    //user
+    <LinearLayout
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:paddingLeft="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/telepon"/>
 
+            <TextView
+                android:id="@+id/editviewusername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="20dp"
+                android:paddingTop="20dp"
+                android:text="Nama Lengkap"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+    //password
     <LinearLayout
         android:layout_width="360dp"
         android:layout_height="wrap_content"
@@ -26,21 +54,21 @@
                 android:src="@drawable/telepon"/>
 
             <EditText
-                android:id="@+id/namamu"
+                android:id="@+id/editpassword"
                 android:hint="telepon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:paddingLeft="20dp"
                 android:paddingTop="20dp"
-                android:text="Nama LEngkap"
+                android:text="Password"
                 android:textStyle="bold" />
         </LinearLayout>
 
 
 
     </LinearLayout>
-
+    //nama
     <LinearLayout
         android:layout_width="360dp"
         android:layout_height="wrap_content"
@@ -58,21 +86,49 @@
                 android:src="@drawable/telepon"/>
 
             <EditText
-                android:id="@+id/nomermu"
+                android:id="@+id/editnama"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="20dp"
+                android:paddingTop="20dp"
+                android:text="Nama Lengkap"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+    //alamat
+    <LinearLayout
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:paddingLeft="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/telepon"/>
+
+            <EditText
+                android:id="@+id/editalamat"
                 android:hint="telepon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:paddingLeft="20dp"
                 android:paddingTop="20dp"
-                android:text="No HP"
+                android:text="Alamat"
                 android:textStyle="bold" />
         </LinearLayout>
 
 
 
     </LinearLayout>
-
+    //email
     <LinearLayout
         android:layout_width="360dp"
         android:layout_height="wrap_content"
@@ -90,21 +146,21 @@
                 android:src="@drawable/telepon"/>
 
             <EditText
-                android:id="@+id/sandimu"
+                android:id="@+id/editemail"
                 android:hint="telepon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:paddingLeft="20dp"
                 android:paddingTop="20dp"
-                android:text="Kata Sandi"
+                android:text="Email"
                 android:textStyle="bold" />
         </LinearLayout>
 
 
 
     </LinearLayout>
-
+    //telepon
     <LinearLayout
         android:layout_width="360dp"
         android:layout_height="wrap_content"
@@ -122,19 +178,48 @@
                 android:src="@drawable/telepon"/>
 
             <EditText
-                android:id="@+id/fotomu"
+                android:id="@+id/edittele"
                 android:hint="telepon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:paddingLeft="20dp"
                 android:paddingTop="20dp"
-                android:text="FOTO"
+                android:text="Telepon"
                 android:textStyle="bold" />
         </LinearLayout>
 
 
 
+    </LinearLayout>
+    //foto
+    <LinearLayout
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:paddingLeft="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/telepon"/>
+
+            <EditText
+                android:id="@+id/editfoto"
+                android:hint="telepon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="20dp"
+                android:paddingTop="20dp"
+                android:text="Telepon"
+                android:textStyle="bold" />
+        </LinearLayout>
     </LinearLayout>
 
     <Button

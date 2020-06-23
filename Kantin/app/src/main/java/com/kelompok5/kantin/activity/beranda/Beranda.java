@@ -2,7 +2,6 @@ package com.kelompok5.kantin.activity.beranda;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,9 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-import com.google.android.material.snackbar.Snackbar;
 import com.kelompok5.kantin.R;
-import com.kelompok5.kantin.activity.login.Login;
 import com.kelompok5.kantin.activity.login.LoginActivity;
 import com.kelompok5.kantin.activity.profil.Profil;
 

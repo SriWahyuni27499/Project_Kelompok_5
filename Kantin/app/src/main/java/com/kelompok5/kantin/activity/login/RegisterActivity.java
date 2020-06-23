@@ -5,6 +5,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -19,17 +21,28 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.kelompok5.kantin.R;
-import com.kelompok5.kantin.helper.SqliteHelper;
 
+
+import org.jetbrains.annotations.NotNull;
+
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
 public class RegisterActivity extends AppCompatActivity {
     protected Cursor cursor;
-    SqliteHelper SQLitedb;
-    Button daftar;
-    EditText nim,name,hp,sandi;
-    TextView kembali;
+
+    Button Bdaftar;
+    EditText a,b,c,d,e,f,g,h;
+    TextView Bkembali;
     SQLiteDatabase db;
 
     @Override
@@ -37,60 +50,84 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         //nyatakan perumpamaahnya
-        SQLitedb = new SqliteHelper(this);
-        nim = (EditText) findViewById(R.id.editTextNim);
-        name= (EditText) findViewById(R.id.editTextNama);
-        hp = (EditText) findViewById(R.id.editTextTelepon);
-        sandi = (EditText) findViewById(R.id.editTextSandi);
-        daftar = (Button) findViewById(R.id.buttonDaftar);
-        kembali = (TextView) findViewById(R.id.textViewKembali);
 
-        daftar.setOnClickListener(new View.OnClickListener() {
+//        a = (EditText) findViewById(R.id.id);
+        b= (EditText) findViewById(R.id.editTextNama);
+        c = (EditText) findViewById(R.id.editTextalamat);
+        d = (EditText) findViewById(R.id.editTextuname);
+        e = (EditText) findViewById(R.id.editTextSandi);
+        f = (EditText) findViewById(R.id.editTextemail);
+        g = (EditText) findViewById(R.id.editTextTelepon);
+
+        Bdaftar = (Button) findViewById(R.id.buttonDaftar);
+        Bkembali = (TextView) findViewById(R.id.textViewKembali);
+
+        Bdaftar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //iki melalui sqlite
-                SQLiteDatabase db = SQLitedb.getWritableDatabase();
-                ContentValues dataForm = new ContentValues();
-                dataForm.put("nim_send", nim.getText().toString());
-                dataForm.put("nama_lengkap", name.getText().toString());
-                dataForm.put("telepon", hp.getText().toString());
-                dataForm.put("kata_sandi", sandi.getText().toString());
+//                SQLiteDatabase db = SQLitedb.getWritableDatabase();
+//                ContentValues dataForm = new ContentValues();
+//                dataForm.put("id_driver", a.getText().length());
+//                dataForm.put("nama_driver", b.getText().toString());
+//                dataForm.put("alamat", c.getText().toString());
+//                dataForm.put("usernmame", d.getText().toString());
+//                dataForm.put("password", e.getText().toString());
+//                dataForm.put("email", f.getText().toString());
+//                dataForm.put("no_telephone", g.getText().toString());
+
+
 
                 //IKI LEWAT FIREBASE(sementara gae API iki)
-                Map<String, String> userdatas = new HashMap<>();
-                userdatas.put("nim_nip", nim.getText().toString());
-                userdatas.put("nama_lengkap", name.getText().toString());
-                userdatas.put("telepon", hp.getText().toString());
-                userdatas.put("kata_sandi", sandi.getText().toString());
+                boolean x = true;
+                try {
+                    OkHttpClient client = new OkHttpClient();
+                    RequestBody reqBody = new MultipartBody.Builder()
+                            .setType(MultipartBody.FORM)
+                            .addFormDataPart("nama_driver", b.getText().toString())
+                            .addFormDataPart("alamat", c.getText().toString())
+                            .addFormDataPart("username", d.getText().toString())
+                            .addFormDataPart("password", e.getText().toString())
+                            .addFormDataPart("email", f.getText().toString())
+                            .addFormDataPart("no_telephone", g.getText().toString())
+                            .addFormDataPart("foto", "null")
+                            .build();
+                    Request request = new Request.Builder().url("http://172.17.100.2/kantin/driver").post(reqBody).build();
 
-                try{
-                    FirebaseFirestore fdb = FirebaseFirestore.getInstance();
-
-                    fdb.collection("usersend")
-                            .document()
-                            .set(userdatas)
-                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    //db.insertOrThrow("tb_driver", null, dataForm);
+                    client.newCall(request).enqueue(new Callback() {
+                        @Override
+                        public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                            RegisterActivity.this.runOnUiThread(new Runnable() {
                                 @Override
-                                public void onSuccess(Void aVoid) {
-                                    System.out.println("success");
+                                public void run() {
+                                    AlertDialog.Builder alig = new AlertDialog.Builder(RegisterActivity.this);
+                                    alig.setMessage("Gagal mendaftarkan akun").setTitle("Gagal").show();
                                 }
-                             })
-                            .addOnFailureListener(new OnFailureListener() {
+                            });
+                        }
+
+                        @Override
+                        public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                            RegisterActivity.this.runOnUiThread(new Runnable() {
                                 @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    System.out.println("Failed");
+                                public void run() {
+                                    AlertDialog.Builder alig = new AlertDialog.Builder(RegisterActivity.this);
+                                    alig.setMessage("Berhasil mendaftarkan akun").setTitle("Sukses").setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                                            startActivity(intent);
+                                        }
+                                    }).show();
                                 }
                             });
 
-                }catch(Exception e){
-                    e.printStackTrace();
-                }
+                        }
+                    });
 
-                boolean x = true;
-                try {
-                    db.insertOrThrow("tb_usersend", null, dataForm);
                 } catch(Exception e) {
-                    Toast.makeText(RegisterActivity.this, "Maaf, terjadi kesalahan di database", Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegisterActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                     x = false;
                     System.out.print(e.getMessage());
                 } finally {
@@ -100,7 +137,7 @@ public class RegisterActivity extends AppCompatActivity {
                 }
             }
         });
-        kembali.setOnClickListener(new View.OnClickListener() {
+        Bkembali.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 RegisterActivity.this.finish();

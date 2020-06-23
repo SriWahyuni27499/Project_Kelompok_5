@@ -1,6 +1,7 @@
 package com.kelompok5.kantin.activity.login;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -23,23 +24,33 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.kelompok5.kantin.MainActivity;
 import com.kelompok5.kantin.R;
 import com.kelompok5.kantin.activity.beranda.Beranda;
-import com.kelompok5.kantin.helper.SqliteHelper;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
 
 public class LoginActivity extends AppCompatActivity {
 
     //Declaration EditTexts
-    EditText editTextNim;
+    EditText editTextUname;
     EditText editTextSandi;
-
-    //Declaration TextInputLayout
-    TextInputLayout textInputLayoutNim;
+    TextInputLayout textInputLayoutUname;
     TextInputLayout textInputLayoutSandi;
 
     //Declaration Button
     Button buttonLogin;
 
     //Declaration SqliteHelper
-    SqliteHelper sqliteHelper;
+
 
     boolean isUserExist = false;
 
@@ -48,9 +59,13 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         //helper
-        sqliteHelper = new SqliteHelper(this);
+
         initCreateAccountTextView();
         initViews();
+
+        editTextUname = findViewById(R.id.editTextNim);
+        editTextSandi = findViewById(R.id.editTextSandi);
+        buttonLogin = findViewById(R.id.buttonLogin);
 
         /*
             Start
@@ -79,104 +94,74 @@ public class LoginActivity extends AppCompatActivity {
 
                 //Check user input is correct or not
                 if (validate()) {
+                    RequestBody requestBody = new MultipartBody.Builder()
+                                                    .setType(MultipartBody.FORM)
+                                                    .addFormDataPart("username", editTextUname.getText().toString())
+                                                    .addFormDataPart("password", editTextSandi.getText().toString())
+                                                    .build();
 
-                    FirebaseFirestore fdb = FirebaseFirestore.getInstance();
+                    OkHttpClient client = new OkHttpClient();
+                    Request request = new Request.Builder().url("http://172.17.100.2/kantin/driver_login").post(requestBody).build();
 
-
-
-                    fdb.collection("usersend")
-                            .whereEqualTo("nim_nip", editTextNim.getText().toString())
-                            .whereEqualTo("kata_sandi", editTextSandi.getText().toString())
-                            .get()
-                            .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    client.newCall(request).enqueue(new Callback() {
+                        @Override
+                        public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                            LoginActivity.this.runOnUiThread(new Runnable() {
                                 @Override
-                                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                                    isUserExist = true;
-                                }
-                            })
-                            .addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    isUserExist = false;
+                                public void run() {
+                                    AlertDialog.Builder build = new AlertDialog.Builder(LoginActivity.this);
+                                    build.setTitle("Gagal").setMessage("Tidak ada jaringan konektivitas").show();
                                 }
                             });
+                        }
 
+                        @Override
+                        public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
 
+                            System.out.println(response.body().string());
 
-                    //Get values from EditText fields
-                    String Nim = editTextNim.getText().toString();
-                    String Sandi = editTextSandi.getText().toString();
+                            if(response.code() == 200){
+                                //Sharedpref
+                                SharedPreferences login = getSharedPreferences("login", MODE_PRIVATE);
+                                SharedPreferences.Editor jalankan = login.edit();
 
-                    //Authenticate user
-                    boolean currentUser = sqliteHelper.Authenticate(new Login(Nim, Sandi));
+                                jalankan.putBoolean("isLogin", true);
 
-                    Log.d("Auth", String.valueOf(currentUser));
+                                jalankan.putString("username", editTextUname.getText().toString());
 
-                    //Check Authentication is successful or not
-                    if (isUserExist) {
-                        Snackbar.make(buttonLogin, "Successfully Logged in!", Snackbar.LENGTH_LONG).show();
+                                jalankan.commit();
 
-                        //Sharedpref
-                        SharedPreferences login = getSharedPreferences("login", MODE_PRIVATE);
-                        SharedPreferences.Editor jalankan = login.edit();
+                                Intent pindah = new Intent(LoginActivity.this, Beranda.class);
+                                startActivity(pindah);
+                                LoginActivity.this.finish();
+                            }else{
+                                LoginActivity.this.runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        AlertDialog.Builder build = new AlertDialog.Builder(LoginActivity.this);
+                                        build.setTitle("Gagal").setMessage("Username atau Password salah").show();
+                                    }
+                                });
+                            }
 
-                        jalankan.putBoolean("isLogin", true);
-
-                        jalankan.putString("username", Nim);
-
-                        jalankan.commit();
-
-                        //User Logged in Successfully Launch You home screen activity
-                        Intent intent=new Intent(LoginActivity.this, Beranda.class);
-                        startActivity(intent);
-                        finish();
-
-                    } else {
-
-                        //User Logged in Failed
-                        Snackbar.make(buttonLogin, "Failed to log in , please try again", Snackbar.LENGTH_LONG).show();
-
-                    }
+                        }
+                    });
                 }
             }
         });
 
     }
 
-    //this method used to set Create account TextView text and click event( maltipal colors
-    // for TextView yet not supported in Xml so i have done it programmatically)
-    private void initCreateAccountTextView() {
-        TextView textViewCreateAccount = (TextView) findViewById(R.id.textViewCreateAccount);
-        textViewCreateAccount.setText(fromHtml("<font color='#ffffff'>I don't have account yet. </font><font color='#0c0099'>create one</font>"));
-        textViewCreateAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-                startActivity(intent);
-            }
-        });
-    }
+
 
     //this method is used to connect XML views to its Objects
     private void initViews() {
-        editTextNim = (EditText) findViewById(R.id.editTextNim);
-        editTextSandi = (EditText) findViewById(R.id.editTextSandi);
-        textInputLayoutNim = (TextInputLayout) findViewById(R.id.textInputLayoutNim);
+        editTextUname = LoginActivity.this.findViewById(R.id.editTextuname);
+        editTextSandi = LoginActivity.this.findViewById(R.id.editTextSandi);
+        textInputLayoutUname = (TextInputLayout) findViewById(R.id.textInputLayoutuname);
         textInputLayoutSandi = (TextInputLayout) findViewById(R.id.textInputLayoutSandi);
         buttonLogin = (Button) findViewById(R.id.buttonLogin);
 
-    }
-
-    //This method is for handling fromHtml method deprecation
-    @SuppressWarnings("deprecation")
-    public static Spanned fromHtml(String html) {
-        Spanned result;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-            result = Html.fromHtml(html, Html.FROM_HTML_MODE_LEGACY);
-        } else {
-            result = Html.fromHtml(html);
-        }
-        return result;
     }
 
     //This method is used to validate input given by user
@@ -184,17 +169,9 @@ public class LoginActivity extends AppCompatActivity {
         boolean valid = false;
 
         //Get values from EditText fields
-        String nim = editTextNim.getText().toString();
+        String Uname = editTextUname.getText().toString();
         String Password = editTextSandi.getText().toString();
 
-        //Handling validation for Email field
-//        if (!android.util.Patterns.U.matches()) {
-//            valid = false;
-//            textInputLayoutNim.setError("Please enter valid email!");
-//        } else {
-//            valid = true;
-//            textInputLayoutSandi.setError(null);
-//        }
 
         //Handling validation for Password field
         if (Password.isEmpty()) {
@@ -211,6 +188,29 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         return valid;
+    }
+
+    //iki tulisane seng tombol registere
+    private void initCreateAccountTextView() {
+        TextView textViewCreateAccount = (TextView) findViewById(R.id.textViewCreateAccount);
+        textViewCreateAccount.setText(fromHtml("<font color='#ffffff'>Saya tidak punya akun. </font><font color='#0c0099'>Buat akun</font>"));
+        textViewCreateAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    public static Spanned fromHtml(String html) {
+        Spanned result;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            result = Html.fromHtml(html, Html.FROM_HTML_MODE_LEGACY);
+        } else {
+            result = Html.fromHtml(html);
+        }
+        return result;
     }
 
 

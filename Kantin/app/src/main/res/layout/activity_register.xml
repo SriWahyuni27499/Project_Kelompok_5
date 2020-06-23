@@ -24,21 +24,7 @@
             android:layout_margin="10dp"
             android:src="@drawable/usericon" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            app:errorEnabled="true"
-            android:id="@+id/textInputLayoutNim"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextNim"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/nim"
-                android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
-
+        //iki namae
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayoutNama"
             android:layout_width="match_parent"
@@ -53,7 +39,69 @@
                 android:hint="@string/nama_lengkap"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
+        //iki alamate
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutalamat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:errorEnabled="true">
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextalamat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="alamat"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+        //ikiNIM
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutuname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:errorEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextuname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="NIM"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+        //iki sandine
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutSandi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:errorEnabled="true"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/colorAccent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextSandi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/kata_sandi"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+        //iki emaile
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutemail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:errorEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextemail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+        //iki no hpne
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayoutTelepon"
             android:layout_width="match_parent"
@@ -71,23 +119,7 @@
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayoutSandi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:errorEnabled="true"
-            app:passwordToggleEnabled="true"
-            app:passwordToggleTint="@color/colorAccent">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextSandi"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/kata_sandi"
-                android:inputType="textPassword" />
-        </com.google.android.material.textfield.TextInputLayout>
-
+        //button daftare
         <Button
             android:id="@+id/buttonDaftar"
             android:layout_width="match_parent"
@@ -98,7 +130,7 @@
             android:layout_weight="1"
             android:background="@color/colorAccent"
             android:text="@string/daftar" />
-
+        //iki kembali
         <TextView
             android:id="@+id/textViewKembali"
             android:layout_width="wrap_content"
