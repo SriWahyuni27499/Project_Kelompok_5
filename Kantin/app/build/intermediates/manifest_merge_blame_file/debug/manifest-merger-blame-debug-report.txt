@@ -1,0 +1,266 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.kelompok5.kantin"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="22"
+8-->C:\Users\Refan\AndroidStudioProjects\Kantin\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="28" />
+9-->C:\Users\Refan\AndroidStudioProjects\Kantin\app\src\main\AndroidManifest.xml
+10
+11    <!--
+12         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+13         Google Maps Android API v2, but you must specify either coarse or fine
+14         location permissions for the 'MyLocation' functionality.
+15    -->
+16    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+16-->C:\Users\Refan\AndroidStudioProjects\Kantin\app\src\main\AndroidManifest.xml:10:5-81
+16-->C:\Users\Refan\AndroidStudioProjects\Kantin\app\src\main\AndroidManifest.xml:10:22-78
+17    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+17-->C:\Users\Refan\AndroidStudioProjects\Kantin\app\src\main\AndroidManifest.xml:11:5-79
+17-->C:\Users\Refan\AndroidStudioProjects\Kantin\app\src\main\AndroidManifest.xml:11:22-76
+18
+19    <!-- Although the *SdkVersion is captured in gradle build files, this is required for non gradle builds -->
+20    <!-- <uses-sdk android:minSdkVersion="14" /> -->
+21    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+21-->[com.google.firebase:firebase-firestore:21.4.3] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\d6d20bbed0019a6db79cbc38256854bc\jetified-firebase-firestore-21.4.3\AndroidManifest.xml:13:5-79
+21-->[com.google.firebase:firebase-firestore:21.4.3] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\d6d20bbed0019a6db79cbc38256854bc\jetified-firebase-firestore-21.4.3\AndroidManifest.xml:13:22-76
+22    <uses-permission android:name="android.permission.INTERNET" />
+22-->[com.google.firebase:firebase-firestore:21.4.3] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\d6d20bbed0019a6db79cbc38256854bc\jetified-firebase-firestore-21.4.3\AndroidManifest.xml:14:5-67
+22-->[com.google.firebase:firebase-firestore:21.4.3] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\d6d20bbed0019a6db79cbc38256854bc\jetified-firebase-firestore-21.4.3\AndroidManifest.xml:14:22-64
+23
+24    <uses-feature
+24-->[com.google.android.gms:play-services-maps:16.1.0] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\ef0a601ed5e063719b275812e674821e\jetified-play-services-maps-16.1.0\AndroidManifest.xml:26:5-28:35
+25        android:glEsVersion="0x00020000"
+25-->[com.google.android.gms:play-services-maps:16.1.0] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\ef0a601ed5e063719b275812e674821e\jetified-play-services-maps-16.1.0\AndroidManifest.xml:27:9-41
+26        android:required="true" />
+26-->[com.google.android.gms:play-services-maps:16.1.0] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\ef0a601ed5e063719b275812e674821e\jetified-play-services-maps-16.1.0\AndroidManifest.xml:28:9-32
+27
+28    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- Required by older versions of Google Play services to create IID tokens -->
+28-->[com.google.android.gms:play-services-measurement-api:17.2.2] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\3d8bed9a53529358f2c71b6407804b7b\play-services-measurement-api-17.2.2\AndroidManifest.xml:24:5-68
+28-->[com.google.android.gms:play-services-measurement-api:17.2.2] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\3d8bed9a53529358f2c71b6407804b7b\play-services-measurement-api-17.2.2\AndroidManifest.xml:24:22-65
+29    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+29-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\946a39d7756c6b05aa38a853bdffc128\firebase-iid-20.0.2\AndroidManifest.xml:26:5-82
+29-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\946a39d7756c6b05aa38a853bdffc128\firebase-iid-20.0.2\AndroidManifest.xml:26:22-79
+30    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+30-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\ac2605da77983b497481f9e2091aefdd\play-services-measurement-17.2.2\AndroidManifest.xml:26:5-110
+30-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\ac2605da77983b497481f9e2091aefdd\play-services-measurement-17.2.2\AndroidManifest.xml:26:22-107
+31
+32    <application
+32-->C:\Users\Refan\AndroidStudioProjects\Kantin\app\src\main\AndroidManifest.xml:14:5-59:19
+33        android:allowBackup="true"
+33-->C:\Users\Refan\AndroidStudioProjects\Kantin\app\src\main\AndroidManifest.xml:15:9-35
+34        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+34-->[androidx.core:core:1.1.0] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\331630a23dfa1f0594bcf54d5352aa36\core-1.1.0\AndroidManifest.xml:24:18-86
+35        android:debuggable="true"
+36        android:icon="@mipmap/ic_launcher"
+36-->C:\Users\Refan\AndroidStudioProjects\Kantin\app\src\main\AndroidManifest.xml:16:9-43
+37        android:label="@string/app_name"
+37-->C:\Users\Refan\AndroidStudioProjects\Kantin\app\src\main\AndroidManifest.xml:17:9-41
+38        android:roundIcon="@mipmap/ic_launcher_round"
+38-->C:\Users\Refan\AndroidStudioProjects\Kantin\app\src\main\AndroidManifest.xml:18:9-54
+39        android:supportsRtl="true"
+39-->C:\Users\Refan\AndroidStudioProjects\Kantin\app\src\main\AndroidManifest.xml:19:9-35
+40        android:testOnly="true"
+41        android:theme="@style/AppTheme" >
+41-->C:\Users\Refan\AndroidStudioProjects\Kantin\app\src\main\AndroidManifest.xml:20:9-40
+42
+43        <!--
+44             The API key for Google Maps-based APIs is defined as a string resource.
+45             (See the file "res/values/google_maps_api.xml").
+46             Note that the API key is linked to the encryption key used to sign the APK.
+47             You need a different API key for each encryption key, including the release key that is used to
+48             sign the APK for publishing.
+49             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+50        -->
+51        <meta-data
+51-->C:\Users\Refan\AndroidStudioProjects\Kantin\app\src\main\AndroidManifest.xml:30:9-32:55
+52            android:name="com.google.android.geo.API_KEY"
+52-->C:\Users\Refan\AndroidStudioProjects\Kantin\app\src\main\AndroidManifest.xml:31:13-58
+53            android:value="@string/google_maps_key" />
+53-->C:\Users\Refan\AndroidStudioProjects\Kantin\app\src\main\AndroidManifest.xml:32:13-52
+54
+55        <activity
+55-->C:\Users\Refan\AndroidStudioProjects\Kantin\app\src\main\AndroidManifest.xml:34:9-36:67
+56            android:name="com.kelompok5.kantin.Map"
+56-->C:\Users\Refan\AndroidStudioProjects\Kantin\app\src\main\AndroidManifest.xml:35:13-32
+57            android:label="@string/title_activity_map" />
+57-->C:\Users\Refan\AndroidStudioProjects\Kantin\app\src\main\AndroidManifest.xml:36:13-55
+58        <activity android:name="com.kelompok5.kantin.activity.profil.Edit" />
+58-->C:\Users\Refan\AndroidStudioProjects\Kantin\app\src\main\AndroidManifest.xml:37:9-58
+58-->C:\Users\Refan\AndroidStudioProjects\Kantin\app\src\main\AndroidManifest.xml:37:19-55
+59        <activity android:name="com.kelompok5.kantin.activity.profil.Profil" />
+59-->C:\Users\Refan\AndroidStudioProjects\Kantin\app\src\main\AndroidManifest.xml:38:9-60
+59-->C:\Users\Refan\AndroidStudioProjects\Kantin\app\src\main\AndroidManifest.xml:38:19-57
+60        <activity android:name="com.kelompok5.kantin.activity.beranda.Beranda" />
+60-->C:\Users\Refan\AndroidStudioProjects\Kantin\app\src\main\AndroidManifest.xml:39:9-62
+60-->C:\Users\Refan\AndroidStudioProjects\Kantin\app\src\main\AndroidManifest.xml:39:19-59
+61        <activity
+61-->C:\Users\Refan\AndroidStudioProjects\Kantin\app\src\main\AndroidManifest.xml:40:9-49:20
+62            android:name="com.kelompok5.kantin.activity.login.LoginActivity"
+62-->C:\Users\Refan\AndroidStudioProjects\Kantin\app\src\main\AndroidManifest.xml:41:13-57
+63            android:label="@string/app_name"
+63-->C:\Users\Refan\AndroidStudioProjects\Kantin\app\src\main\AndroidManifest.xml:42:13-45
+64            android:theme="@style/AppTheme.NoActionBar" >
+64-->C:\Users\Refan\AndroidStudioProjects\Kantin\app\src\main\AndroidManifest.xml:43:13-56
+65            <intent-filter>
+65-->C:\Users\Refan\AndroidStudioProjects\Kantin\app\src\main\AndroidManifest.xml:44:13-48:29
+66                <action android:name="android.intent.action.MAIN" />
+66-->C:\Users\Refan\AndroidStudioProjects\Kantin\app\src\main\AndroidManifest.xml:45:17-69
+66-->C:\Users\Refan\AndroidStudioProjects\Kantin\app\src\main\AndroidManifest.xml:45:25-66
+67
+68                <category android:name="android.intent.category.LAUNCHER" />
+68-->C:\Users\Refan\AndroidStudioProjects\Kantin\app\src\main\AndroidManifest.xml:47:17-77
+68-->C:\Users\Refan\AndroidStudioProjects\Kantin\app\src\main\AndroidManifest.xml:47:27-74
+69            </intent-filter>
+70        </activity>
+71        <activity
+71-->C:\Users\Refan\AndroidStudioProjects\Kantin\app\src\main\AndroidManifest.xml:50:9-53:59
+72            android:name="com.kelompok5.kantin.activity.login.RegisterActivity"
+72-->C:\Users\Refan\AndroidStudioProjects\Kantin\app\src\main\AndroidManifest.xml:51:13-60
+73            android:label="@string/app_name"
+73-->C:\Users\Refan\AndroidStudioProjects\Kantin\app\src\main\AndroidManifest.xml:52:13-45
+74            android:theme="@style/AppTheme.NoActionBar" />
+74-->C:\Users\Refan\AndroidStudioProjects\Kantin\app\src\main\AndroidManifest.xml:53:13-56
+75        <activity
+75-->C:\Users\Refan\AndroidStudioProjects\Kantin\app\src\main\AndroidManifest.xml:54:9-57:59
+76            android:name="com.kelompok5.kantin.MainActivity"
+76-->C:\Users\Refan\AndroidStudioProjects\Kantin\app\src\main\AndroidManifest.xml:55:13-41
+77            android:label="Home Screen"
+77-->C:\Users\Refan\AndroidStudioProjects\Kantin\app\src\main\AndroidManifest.xml:56:13-40
+78            android:theme="@style/AppTheme.NoActionBar" />
+78-->C:\Users\Refan\AndroidStudioProjects\Kantin\app\src\main\AndroidManifest.xml:57:13-56
+79
+80        <service
+80-->[com.google.firebase:firebase-firestore:21.4.3] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\d6d20bbed0019a6db79cbc38256854bc\jetified-firebase-firestore-21.4.3\AndroidManifest.xml:17:9-23:19
+81            android:name="com.google.firebase.components.ComponentDiscoveryService"
+81-->[com.google.firebase:firebase-firestore:21.4.3] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\d6d20bbed0019a6db79cbc38256854bc\jetified-firebase-firestore-21.4.3\AndroidManifest.xml:18:13-84
+82            android:directBootAware="true"
+82-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\3651031eb80ab703e3ba2beba82fd60b\jetified-firebase-common-19.3.0\AndroidManifest.xml:34:13-43
+83            android:exported="false" >
+83-->[com.google.firebase:firebase-firestore:21.4.3] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\d6d20bbed0019a6db79cbc38256854bc\jetified-firebase-firestore-21.4.3\AndroidManifest.xml:19:13-37
+84            <meta-data
+84-->[com.google.firebase:firebase-firestore:21.4.3] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\d6d20bbed0019a6db79cbc38256854bc\jetified-firebase-firestore-21.4.3\AndroidManifest.xml:20:13-22:85
+85                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
+85-->[com.google.firebase:firebase-firestore:21.4.3] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\d6d20bbed0019a6db79cbc38256854bc\jetified-firebase-firestore-21.4.3\AndroidManifest.xml:21:17-111
+86                android:value="com.google.firebase.components.ComponentRegistrar" />
+86-->[com.google.firebase:firebase-firestore:21.4.3] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\d6d20bbed0019a6db79cbc38256854bc\jetified-firebase-firestore-21.4.3\AndroidManifest.xml:22:17-82
+87            <meta-data
+87-->[com.google.firebase:firebase-database:19.3.0] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\9c9721656f8474e8f45bcfb58968a1b2\firebase-database-19.3.0\AndroidManifest.xml:32:13-34:85
+88                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
+88-->[com.google.firebase:firebase-database:19.3.0] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\9c9721656f8474e8f45bcfb58968a1b2\firebase-database-19.3.0\AndroidManifest.xml:33:17-109
+89                android:value="com.google.firebase.components.ComponentRegistrar" />
+89-->[com.google.firebase:firebase-database:19.3.0] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\9c9721656f8474e8f45bcfb58968a1b2\firebase-database-19.3.0\AndroidManifest.xml:34:17-82
+90            <meta-data
+90-->[com.google.android.gms:play-services-measurement-api:17.2.2] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\3d8bed9a53529358f2c71b6407804b7b\play-services-measurement-api-17.2.2\AndroidManifest.xml:30:13-32:85
+91                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+91-->[com.google.android.gms:play-services-measurement-api:17.2.2] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\3d8bed9a53529358f2c71b6407804b7b\play-services-measurement-api-17.2.2\AndroidManifest.xml:31:17-139
+92                android:value="com.google.firebase.components.ComponentRegistrar" />
+92-->[com.google.android.gms:play-services-measurement-api:17.2.2] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\3d8bed9a53529358f2c71b6407804b7b\play-services-measurement-api-17.2.2\AndroidManifest.xml:32:17-82
+93            <meta-data
+93-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\946a39d7756c6b05aa38a853bdffc128\firebase-iid-20.0.2\AndroidManifest.xml:32:13-34:85
+94                android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
+94-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\946a39d7756c6b05aa38a853bdffc128\firebase-iid-20.0.2\AndroidManifest.xml:33:17-96
+95                android:value="com.google.firebase.components.ComponentRegistrar" />
+95-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\946a39d7756c6b05aa38a853bdffc128\firebase-iid-20.0.2\AndroidManifest.xml:34:17-82
+96        </service> <!-- Needs to be explicitly declared on P+ -->
+97        <uses-library
+97-->[com.google.android.gms:play-services-maps:16.1.0] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\ef0a601ed5e063719b275812e674821e\jetified-play-services-maps-16.1.0\AndroidManifest.xml:33:9-35:40
+98            android:name="org.apache.http.legacy"
+98-->[com.google.android.gms:play-services-maps:16.1.0] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\ef0a601ed5e063719b275812e674821e\jetified-play-services-maps-16.1.0\AndroidManifest.xml:34:13-50
+99            android:required="false" />
+99-->[com.google.android.gms:play-services-maps:16.1.0] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\ef0a601ed5e063719b275812e674821e\jetified-play-services-maps-16.1.0\AndroidManifest.xml:35:13-37
+100
+101        <receiver
+101-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\946a39d7756c6b05aa38a853bdffc128\firebase-iid-20.0.2\AndroidManifest.xml:37:9-44:20
+102            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+102-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\946a39d7756c6b05aa38a853bdffc128\firebase-iid-20.0.2\AndroidManifest.xml:38:13-78
+103            android:exported="true"
+103-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\946a39d7756c6b05aa38a853bdffc128\firebase-iid-20.0.2\AndroidManifest.xml:39:13-36
+104            android:permission="com.google.android.c2dm.permission.SEND" >
+104-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\946a39d7756c6b05aa38a853bdffc128\firebase-iid-20.0.2\AndroidManifest.xml:40:13-73
+105            <intent-filter>
+105-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\946a39d7756c6b05aa38a853bdffc128\firebase-iid-20.0.2\AndroidManifest.xml:41:13-43:29
+106                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+106-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\946a39d7756c6b05aa38a853bdffc128\firebase-iid-20.0.2\AndroidManifest.xml:42:17-81
+106-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\946a39d7756c6b05aa38a853bdffc128\firebase-iid-20.0.2\AndroidManifest.xml:42:25-78
+107            </intent-filter>
+108        </receiver>
+109
+110        <activity
+110-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\b989d78505a527364775fcd163b70614\play-services-base-17.0.0\AndroidManifest.xml:23:9-26:75
+111            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+111-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\b989d78505a527364775fcd163b70614\play-services-base-17.0.0\AndroidManifest.xml:24:13-79
+112            android:exported="false"
+112-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\b989d78505a527364775fcd163b70614\play-services-base-17.0.0\AndroidManifest.xml:25:13-37
+113            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+113-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\b989d78505a527364775fcd163b70614\play-services-base-17.0.0\AndroidManifest.xml:26:13-72
+114
+115        <receiver
+115-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\ac2605da77983b497481f9e2091aefdd\play-services-measurement-17.2.2\AndroidManifest.xml:29:9-33:20
+116            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+116-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\ac2605da77983b497481f9e2091aefdd\play-services-measurement-17.2.2\AndroidManifest.xml:30:13-85
+117            android:enabled="true"
+117-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\ac2605da77983b497481f9e2091aefdd\play-services-measurement-17.2.2\AndroidManifest.xml:31:13-35
+118            android:exported="false" >
+118-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\ac2605da77983b497481f9e2091aefdd\play-services-measurement-17.2.2\AndroidManifest.xml:32:13-37
+119        </receiver>
+120        <receiver
+120-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\ac2605da77983b497481f9e2091aefdd\play-services-measurement-17.2.2\AndroidManifest.xml:34:9-42:20
+121            android:name="com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver"
+121-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\ac2605da77983b497481f9e2091aefdd\play-services-measurement-17.2.2\AndroidManifest.xml:35:13-100
+122            android:enabled="true"
+122-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\ac2605da77983b497481f9e2091aefdd\play-services-measurement-17.2.2\AndroidManifest.xml:36:13-35
+123            android:exported="true"
+123-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\ac2605da77983b497481f9e2091aefdd\play-services-measurement-17.2.2\AndroidManifest.xml:37:13-36
+124            android:permission="android.permission.INSTALL_PACKAGES" >
+124-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\ac2605da77983b497481f9e2091aefdd\play-services-measurement-17.2.2\AndroidManifest.xml:38:13-69
+125            <intent-filter>
+125-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\ac2605da77983b497481f9e2091aefdd\play-services-measurement-17.2.2\AndroidManifest.xml:39:13-41:29
+126                <action android:name="com.android.vending.INSTALL_REFERRER" />
+126-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\ac2605da77983b497481f9e2091aefdd\play-services-measurement-17.2.2\AndroidManifest.xml:40:17-79
+126-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\ac2605da77983b497481f9e2091aefdd\play-services-measurement-17.2.2\AndroidManifest.xml:40:25-76
+127            </intent-filter>
+128        </receiver>
+129
+130        <service
+130-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\ac2605da77983b497481f9e2091aefdd\play-services-measurement-17.2.2\AndroidManifest.xml:44:9-47:40
+131            android:name="com.google.android.gms.measurement.AppMeasurementService"
+131-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\ac2605da77983b497481f9e2091aefdd\play-services-measurement-17.2.2\AndroidManifest.xml:45:13-84
+132            android:enabled="true"
+132-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\ac2605da77983b497481f9e2091aefdd\play-services-measurement-17.2.2\AndroidManifest.xml:46:13-35
+133            android:exported="false" />
+133-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\ac2605da77983b497481f9e2091aefdd\play-services-measurement-17.2.2\AndroidManifest.xml:47:13-37
+134        <service
+134-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\ac2605da77983b497481f9e2091aefdd\play-services-measurement-17.2.2\AndroidManifest.xml:48:9-52:72
+135            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+135-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\ac2605da77983b497481f9e2091aefdd\play-services-measurement-17.2.2\AndroidManifest.xml:49:13-87
+136            android:enabled="true"
+136-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\ac2605da77983b497481f9e2091aefdd\play-services-measurement-17.2.2\AndroidManifest.xml:50:13-35
+137            android:exported="false"
+137-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\ac2605da77983b497481f9e2091aefdd\play-services-measurement-17.2.2\AndroidManifest.xml:51:13-37
+138            android:permission="android.permission.BIND_JOB_SERVICE" />
+138-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\ac2605da77983b497481f9e2091aefdd\play-services-measurement-17.2.2\AndroidManifest.xml:52:13-69
+139
+140        <provider
+140-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\3651031eb80ab703e3ba2beba82fd60b\jetified-firebase-common-19.3.0\AndroidManifest.xml:26:9-30:39
+141            android:name="com.google.firebase.provider.FirebaseInitProvider"
+141-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\3651031eb80ab703e3ba2beba82fd60b\jetified-firebase-common-19.3.0\AndroidManifest.xml:27:13-77
+142            android:authorities="com.kelompok5.kantin.firebaseinitprovider"
+142-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\3651031eb80ab703e3ba2beba82fd60b\jetified-firebase-common-19.3.0\AndroidManifest.xml:28:13-72
+143            android:exported="false"
+143-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\3651031eb80ab703e3ba2beba82fd60b\jetified-firebase-common-19.3.0\AndroidManifest.xml:29:13-37
+144            android:initOrder="100" />
+144-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\3651031eb80ab703e3ba2beba82fd60b\jetified-firebase-common-19.3.0\AndroidManifest.xml:30:13-36
+145
+146        <meta-data
+146-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\a1eadfe3986bda9fcb9c0fc3b0f88520\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
+147            android:name="com.google.android.gms.version"
+147-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\a1eadfe3986bda9fcb9c0fc3b0f88520\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
+148            android:value="@integer/google_play_services_version" />
+148-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Refan\.gradle\caches\transforms-2\files-2.1\a1eadfe3986bda9fcb9c0fc3b0f88520\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
+149    </application>
+150
+151</manifest>
