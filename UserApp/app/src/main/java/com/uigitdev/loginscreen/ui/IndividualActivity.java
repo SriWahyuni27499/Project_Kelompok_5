@@ -1,7 +1,6 @@
 package com.uigitdev.loginscreen.ui;
 
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
@@ -10,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.ViewModelProviders;
+
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,8 +19,9 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.uigitdev.loginscreen.R;
 import com.uigitdev.loginscreen.model.CartItem;
 import com.uigitdev.loginscreen.model.FoodDetails;
+import com.uigitdev.loginscreen.utility.GlideApp;
 import com.uigitdev.loginscreen.utility.MyAppGlideModule;
-import com.uigitdev.loginscreen.viewmodel.FoodViewModel;
+import com.uigitdev.loginscreen.viewmodel.FoodDetailViewModel;
 
 import java.util.List;
 

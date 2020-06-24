@@ -32,6 +32,18 @@
             android:name=".ViewPagerActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".ui.MenuActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".ui.IndividualActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".ui.CartActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"/>
 
     </application>
 

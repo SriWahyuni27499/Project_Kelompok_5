@@ -17,7 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import com.uigitdev.loginscreen.R;
-import com.uigitdev.loginscreen.ViewPagerActivity;
+import com.uigitdev.loginscreen.ui.MenuActivity;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText ID, password;
@@ -79,7 +79,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (ID.getText().length() > 0 && password.getText().length() > 0) {
                     Toast.makeText(LoginActivity.this, ID.getText() + " " + password.getText(), Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(LoginActivity.this, ViewPagerActivity.class));
+                    startActivity(new Intent(LoginActivity.this, MenuActivity.class));
                 }
             }
         });

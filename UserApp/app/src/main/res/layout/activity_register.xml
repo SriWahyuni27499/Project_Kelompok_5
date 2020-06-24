@@ -142,6 +142,78 @@
 
                 </androidx.cardview.widget.CardView>
 
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/email_input_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/password_input_parent"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="15dp"
+                    app:cardBackgroundColor="@color/colorCardViewBackground"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="0dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <EditText
+                            android:id="@+id/InputEmail"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:background="@null"
+                            android:hint="@string/email_hint"
+                            android:imeOptions="actionDone"
+                            android:inputType="textEmailAddress"
+                            android:maxLines="1"
+                            android:textColor="@color/colorTitle"
+                            android:textSize="15dp"
+                            tools:ignore="TextFields" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/HP_input_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/email_input_parent"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="15dp"
+                    app:cardBackgroundColor="@color/colorCardViewBackground"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="0dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <EditText
+                            android:id="@+id/InputNoHP"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:background="@null"
+                            android:hint="@string/nomor_hint"
+                            android:imeOptions="actionDone"
+                            android:inputType="textPhonetic"
+                            android:maxLines="1"
+                            android:textColor="@color/colorTitle"
+                            android:textSize="15dp"
+                            tools:ignore="TextFields" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
             </RelativeLayout>
 
             <androidx.cardview.widget.CardView

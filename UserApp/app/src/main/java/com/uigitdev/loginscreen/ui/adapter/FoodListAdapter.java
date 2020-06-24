@@ -19,6 +19,7 @@ import com.uigitdev.loginscreen.model.FoodDetails;
 import com.uigitdev.loginscreen.dbutilities.AppDatabase;
 import com.uigitdev.loginscreen.ui.IndividualActivity;
 import com.uigitdev.loginscreen.ui.RatingTextView;
+import com.uigitdev.loginscreen.utility.GlideApp;
 import com.uigitdev.loginscreen.utility.MyAppGlideModule;
 import com.uigitdev.loginscreen.utility.ObservableObject;
 
