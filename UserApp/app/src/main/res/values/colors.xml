@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#131313</color>
     <color name="colorPrimaryDark">#131313</color>
-    <color name="colorAccent">#3CDA85</color>
+    <color name="colorAccent">#ffb300</color>
     <color name="colorTitle">#313131</color>
     <color name="colorWhite">#ffffff</color>
     <color name="colorCardViewBackground">#E9EAED</color>
@@ -15,8 +15,8 @@
     <color name="colorCardBackgroundView">#031219</color>
 
 <!--    menu -->
-    <color name="colorPrimaryMenu">#C62828</color>
-    <color name="colorPrimaryDarkMenu">#b71c1c</color>
+    <color name="colorPrimaryMenu">#ffba19</color>
+    <color name="colorPrimaryDarkMenu">#ffb300</color>
     <color name="colorAccentMenu">#ffffff</color>
     <color name="ratingLowMenu">#D60000</color>
     <color name="ratingMediumMenu">#FFA500</color>

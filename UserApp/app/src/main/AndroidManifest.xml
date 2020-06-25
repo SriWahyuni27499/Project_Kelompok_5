@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.uigitdev.loginscreen">
+    package="com.shandy.kantin">
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".HomeActivity"
+            android:name="com.shandy.kantin.HomeActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,27 +22,23 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".akun.LoginActivity"
+            android:name="com.shandy.kantin.akun.LoginActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize"/>
         <activity
-            android:name=".akun.DaftarActivity"
+            android:name="com.shandy.kantin.akun.DaftarActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize"/>
         <activity
-            android:name=".ViewPagerActivity"
+            android:name="com.shandy.kantin.ui.MenuActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize"/>
         <activity
-            android:name=".ui.MenuActivity"
+            android:name="com.shandy.kantin.ui.IndividualActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize"/>
         <activity
-            android:name=".ui.IndividualActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize"/>
-        <activity
-            android:name=".ui.CartActivity"
+            android:name="com.shandy.kantin.ui.CartActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize"/>
 

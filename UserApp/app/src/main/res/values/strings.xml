@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Ngantin?</string>
+    <string name="app_name">Kantin</string>
     <string name="halo_polije">Halo POLIJE !</string>
     <string name="kantiners">Aplikasi untuk KANTINERS yang terlalu Mager</string>
     <string name="masuk">Masuk</string>
@@ -30,4 +30,5 @@
     <string name="bill_details">Bill Details</string>
     <string name="coupon">Coupon</string>
     <string name="your_cart">Your Cart</string>
+
 </resources>
