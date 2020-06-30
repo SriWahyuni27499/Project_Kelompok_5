@@ -8,6 +8,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,7 +24,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.io.InputStream;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+import io.grpc.internal.IoUtils;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.MultipartBody;
@@ -34,9 +39,9 @@ import okhttp3.Response;
 public class Profil extends AppCompatActivity {
 
     protected Cursor cursor;
-
     TextView user,namae,nohpmu,alamate,emaile;
     Button metu,rubahen;
+    CircleImageView imgUpload;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +58,8 @@ public class Profil extends AppCompatActivity {
         metu = (Button) findViewById(R.id.keluar);
         rubahen = (Button) findViewById(R.id.ubah);
 
+        imgUpload = findViewById(R.id.profilkugambar);
+
         final ProgressDialog pdig = new ProgressDialog(this);
         runOnUiThread(new Runnable() {
             @Override
@@ -67,7 +74,7 @@ public class Profil extends AppCompatActivity {
             @Override
             public void run() {
                 SharedPreferences username = getSharedPreferences("login", MODE_PRIVATE);
-                String userString = username.getString("username", "");
+                final String userString = username.getString("username", "");
 
                 RequestBody reqBody = new MultipartBody.Builder()
                                             .setType(MultipartBody.FORM)
@@ -97,6 +104,38 @@ public class Profil extends AppCompatActivity {
                                             nohpmu.setText(jsonObject.getJSONArray("data").getJSONObject(0).getString("no_telephone"));
                                         }catch (Exception e){
                                             e.printStackTrace();
+                                        }finally{
+                                            try{
+                                                OkHttpClient newClient = new OkHttpClient();
+                                                Request req = new Request.Builder().url("http://172.17.100.2/kantin/assets/fotoprofil/"+userString+"/"+userString+".jpg").build();
+                                                newClient.newCall(req).enqueue(new Callback() {
+                                                    @Override
+                                                    public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                                                        e.printStackTrace();
+                                                    }
+
+                                                    @Override
+                                                    public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                                                        if(response.isSuccessful()){
+                                                            if(response.body().contentLength() != 0){
+                                                                InputStream in = response.body().byteStream();
+                                                                byte[] gambar = IoUtils.toByteArray(in);
+                                                                final Bitmap decodedByte = BitmapFactory.decodeByteArray(gambar, 0, gambar.length);
+                                                                runOnUiThread(new Runnable() {
+                                                                    @Override
+                                                                    public void run() {
+                                                                        imgUpload.setImageBitmap(decodedByte);
+                                                                    }
+                                                                });
+                                                            }
+                                                        }else{
+                                                            System.out.println(response.body());
+                                                        }
+                                                    }
+                                                });
+                                            }catch(Exception e){
+                                                e.printStackTrace();
+                                            }
                                         }
                                     }
                                 });

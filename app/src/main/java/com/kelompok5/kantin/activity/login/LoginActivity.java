@@ -1,27 +1,20 @@
 package com.kelompok5.kantin.activity.login;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.Spanned;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.kelompok5.kantin.MainActivity;
 import com.kelompok5.kantin.R;
 import com.kelompok5.kantin.activity.beranda.Beranda;
 
@@ -61,6 +54,7 @@ public class LoginActivity extends AppCompatActivity {
         //helper
 
         initCreateAccountTextView();
+        direcwhats();
         initViews();
 
         editTextUname = findViewById(R.id.editTextNim);
@@ -193,7 +187,7 @@ public class LoginActivity extends AppCompatActivity {
     //iki tulisane seng tombol registere
     private void initCreateAccountTextView() {
         TextView textViewCreateAccount = (TextView) findViewById(R.id.textViewCreateAccount);
-        textViewCreateAccount.setText(fromHtml("<font color='#ffffff'>Saya tidak punya akun. </font><font color='#0c0099'>Buat akun</font>"));
+        textViewCreateAccount.setText(fromHtml("<font color='#0c0099'>Saya tidak punya akun. </font><font color='#0c0099'>Buat akun</font>"));
         textViewCreateAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -213,5 +207,20 @@ public class LoginActivity extends AppCompatActivity {
         return result;
     }
 
+    //iki tulisane seng tombol registere
+    private void direcwhats() {
+        TextView textViewCreateAccount = (TextView) findViewById(R.id.directwa);
+        textViewCreateAccount.setText(fromHtml("<font color='#0c0099'> Lupa Username atau Sandi? </font>"));
+        textViewCreateAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Uri uri = Uri.parse("smsto:" + "+6282140337661");
+                Intent i = new Intent(Intent.ACTION_SENDTO, uri);
+                i.setPackage("com.whatsapp");
+                startActivity(Intent.createChooser(i, ""));
+
+            }
+        });
+    }
 
 }
