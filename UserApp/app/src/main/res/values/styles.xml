@@ -14,6 +14,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDarkMenu</item>
         <item name="colorAccent">@color/grey_textMenu</item>
     </style>
+
     <style name="AppTheme.Base" parent="Theme.AppCompat.NoActionBar">
         <item name="colorPrimary">@color/colorPrimaryMenu</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDarkMenu</item>
@@ -28,5 +29,14 @@
         <item name="android:windowBackground">@layout/launcher</item>
         <item name="android:windowFullscreen">true</item>
     </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

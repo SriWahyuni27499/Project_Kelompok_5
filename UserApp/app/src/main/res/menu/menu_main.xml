@@ -10,4 +10,10 @@
         android:icon="@drawable/ic_sort"
         app:showAsAction="always"/>
 
+    <item
+        android:id="@+id/action_profile"
+        android:icon="@drawable/ic_profile"
+        app:showAsAction="always"
+        android:title="profil_menu" />
+
 </menu>

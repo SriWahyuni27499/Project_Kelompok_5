@@ -21,7 +21,10 @@ import android.view.animation.LayoutAnimationController;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
+import com.shandy.kantin.HomeActivity;
 import com.shandy.kantin.R;
+import com.shandy.kantin.akun.DaftarActivity;
+import com.shandy.kantin.akun.ProfileActivity;
 import com.shandy.kantin.model.CartItem;
 import com.shandy.kantin.model.FoodDetails;
 import com.shandy.kantin.ui.adapter.FoodListAdapter;
@@ -127,6 +130,10 @@ public class MenuActivity extends AppCompatActivity implements java.util.Observe
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == R.id.action_sort){
             showPopup(findViewById(R.id.action_sort));
+        }else{
+            if (item.getItemId() == R.id.action_profile){
+                startActivity(new Intent(MenuActivity.this, ProfileActivity.class));
+            }
         }
         return super.onOptionsItemSelected(item);
     }

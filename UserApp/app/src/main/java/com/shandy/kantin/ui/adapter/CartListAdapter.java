@@ -68,9 +68,9 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.Recycl
     public void onBindViewHolder(@NonNull final RecyclerViewHolders holder, int position) {
         CartItem cartItem = cartList.get(holder.getAdapterPosition());
         holder.tName.setText(cartItem.getName());
-        holder.tPrice.setText("₹ "+cartItem.getPrice());
+        holder.tPrice.setText("Rp "+cartItem.getPrice());
         holder.tQuantity.setText(String.valueOf(cartItem.getQuantity()));
-        holder.tTotalPrice.setText("₹ "+ String.valueOf(cartItem.getQuantity()*cartItem.getPrice()));
+        holder.tTotalPrice.setText("Rp "+ String.valueOf(cartItem.getQuantity()*cartItem.getPrice()));
     }
 
 

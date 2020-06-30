@@ -24,5 +24,8 @@
     <color name="whiteMenu">#ffffff</color>
     <color name="greyMenu">#eeeeee</color>
     <color name="grey_textMenu">#4c4c4d</color>
+    <color name="lightgrey">#EEEEEE</color>
+    <color name="goodgrey">#535353</color>
+    <color name="grey">#E9EAEE</color>
 
 </resources>

@@ -55,35 +55,11 @@ public class CartViewModel extends AndroidViewModel {
             for (CartItem cartItem : cartItemList) {
                 totalCost = totalCost+(cartItem.getPrice()*cartItem.getQuantity());
             }
-            discount = calculateDiscount(couponApplied);
-            deliveryCost = calculateDeliveryCost(couponApplied);
-            grandTotal.setValue(totalCost - discount + deliveryCost);
+
+            grandTotal.setValue(totalCost + deliveryCost);
         }
     }
 
-    private Double calculateDeliveryCost(String couponApplied) {
-        if(couponApplied.equals("FREEDEL") && totalCost>100){
-            errorString.setValue("");
-            return 0.0;
-        }else if(couponApplied.equals("FREEDEL")) {
-            errorString.setValue("Cart value should be > 100");
-        }
-        return 30.0;
-    }
-
-    private Double calculateDiscount(String couponApplied) {
-        if(couponApplied.equals("F22LABS") && totalCost>400){
-            errorString.setValue("");
-            return (totalCost*20)/100;
-        }else if(couponApplied.equals("F22LABS")){
-            errorString.setValue("Cart value should be > 400");
-        }
-        return 0.0;
-    }
-
-    public Double getDiscountAmt(){
-        return discount;
-    }
 
     public Double getDeliveryCost(){
         return deliveryCost;
@@ -97,11 +73,6 @@ public class CartViewModel extends AndroidViewModel {
         return grandTotal;
     }
 
-
-    public void applyCoupon(String coupon) {
-        couponApplied = coupon;
-        calculateGrandTotalCost();
-    }
 
     public MediatorLiveData<List<CartItem>> getCartItemsLiveData() {
         return mediatorLiveData;
