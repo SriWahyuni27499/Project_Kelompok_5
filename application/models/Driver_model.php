@@ -29,6 +29,21 @@ class Driver_model extends CI_Model {
         return $this->db->affected_rows();
         
       
-      }  
+			} 
+			
+			public function get_id_driver($username){
+				return $this->db->select("id_driver")->from("tb_driver")->where("username", $username)->get()->result_array();
+			}
+
+			public function get_detail_trx($id_trx){
+				return $this->db->select("*")->from("tb_detail_trx")->where("id_trx", $id_trx)->get()->result_array();
+			}
+      public function get_histori($id_driver){
+					return $this->db->select("*")->from("tb_trx")->where("tb_trx.id_driver", $id_driver)->get()->result_array();
+      }
+      
+      public function get_makanan($id_makanan){
+				return $this->db->select("nama_barang, harga")->from("tb_barang")->where("id_barang", $id_makanan)->get()->result_array();
+      }
 
 }

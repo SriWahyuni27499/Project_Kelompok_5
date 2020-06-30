@@ -10,7 +10,25 @@ class Driver extends RestController {
         // Construct the parent class
         parent::__construct();
         $this->load->model('Driver_model','Driver');
-    }
+	}
+	
+	public function base64_to_jpeg($base64_string, $output_file) {
+		// open the output file for writing
+		$ifp = fopen( $output_file, 'wb' ); 
+	
+		// split the string on commas
+		// $data[ 0 ] == "data:image/png;base64"
+		// $data[ 1 ] == <actual base64 string>
+		$data = explode( ',', $base64_string );
+	
+		// we could add validation here with ensuring count( $data ) > 1
+		fwrite( $ifp, base64_decode( $data[ 0 ] ) );
+	
+		// clean up the file resource
+		fclose( $ifp ); 
+	
+		return $output_file; 
+	}
 
     public function index_get()
     {
@@ -70,8 +88,9 @@ class Driver extends RestController {
             "password" => $this->put('password'),
             "email" => $this->put('email'),
             "no_telephone"  => $this->put('no_telephone'),
-            "foto"  => $this->put('foto')
+            "foto"  => $this->put('username') . ".jpg"
 	   ];
+
 
        if( $this->Driver->put_Driver($Driverc) > 0 ){
         $this->response( [
@@ -79,10 +98,9 @@ class Driver extends RestController {
             'message' => 'sukses'
         ], 200 );
     }else{
-
           $this->response( [
             'status' => false,
-            'message' => 'No users were found'
+            "data" => $Driverc
         ], 400 );
 
     }
