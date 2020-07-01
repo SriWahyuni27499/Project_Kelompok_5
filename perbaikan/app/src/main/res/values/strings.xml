@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">Kantin</string>
+
+    //disini Register
+    <string name="buat_akun"><font color="#00ff00">text</font></string>
+    <string name="nim">NIM/NIP</string>
+    <string name="kata_sandi">Kata Sandi</string>
+    <string name="masuk">Masuk</string>
+    <string name="nama_lengkap">Nama Lengkap</string>
+    <string name="telepon">No HP</string>
+    <string name="daftar">Daftar</string>
+    <string name="kembali">Kembali</string>
+    <string name="title_activity_map">Map</string>
+
+
+    <string name="group1">G1</string>
+    <string name="group2">G2</string>
+    <string name="group3">G3</string>
+    <string name="group4">G4</string>
+    <string name="group5">G5</string>
+    
+    <string-array name="group1">
+        <item>I1</item>
+    </string-array>
+
+    <string-array name="group2">
+        <item>I1</item>
+        <item>I2</item>
+    </string-array>
+
+    <string-array name="group3">
+        <item>I1</item>
+        <item>I2</item>
+        <item>I3</item>
+    </string-array>
+    
+    
+</resources>
