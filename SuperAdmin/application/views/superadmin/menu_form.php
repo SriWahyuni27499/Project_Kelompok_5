@@ -1,12 +1,12 @@
 <div class="container-fluid">
 	<div class="alert alert-success" role="alert">
-        <i class="fas fa-utensils"> </i>Input Menu makanan
+        <i class="fas fa-utensils"> </i>Input Menu
     </div>
 	
-	<form method="post" action="<?php echo base_url ('superadmin/makanan/input_aksi')?>">
+	<?php echo form_open_multipart('superadmin/menu/input_aksi');?>
 		<div class="form-group">
 			<label>Kode Jenis</label>
-			<input type="text" name="id_jenis" placeholder="Masukkan Kode Jurusan" class="form-control">
+			<input type="text" name="id_jenis" placeholder="Masukkan Kode Jenis" class="form-control">
 			<?php echo form_error('id_jenis', '<div class="text-danger small" ml-3>')?>
 		</div>
 
@@ -17,8 +17,8 @@
 		</div>
 
 		<div class="form-group">
-			<label>Nama Barang</label>
-			<input type="text" name="nama_barang" placeholder="Masukkan Nama Barang" class="form-control">
+			<label>Nama Menu</label>
+			<input type="text" name="nama_barang" placeholder="Masukkan Nama Menu" class="form-control">
 			<?php echo form_error('nama_barang', '<div class="text-danger small" ml-3>')?>
 		</div>
 
@@ -35,12 +35,13 @@
 		</div>
 
 		<div class="form-group">
-			<label>Foto</label>
-			<input type="text" name="foto" placeholder="Masukkan Foto" class="form-control">
+			<label>Upload Foto</label>
+			<input type="file" name="foto"  class="form-control">
 			<?php echo form_error('foto', '<div class="text-danger small" ml-3>')?>
 		</div>
 
 		<button type="submit" class="btn btn-primary">Simpan</button>
-	</form>
+
+	<?php echo form_close(); ?>
 
 </div>

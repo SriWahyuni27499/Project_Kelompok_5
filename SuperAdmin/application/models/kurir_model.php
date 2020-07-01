@@ -1,15 +1,15 @@
 <?php
 
-class Makanan_model extends CI_Model{
+class Kurir_model extends CI_Model{
 
 	public function tampil_data()
 	{
-		return $this->db->get('tb_barang');
+		return $this->db->get('tb_driver');
 	}
 
 	public function input_data($data)
 	{
-		$this->db->insert('tb_barang', $data);
+		$this->db->insert('tb_driver', $data);
 	}
 
 	public function edit_data($where, $table)

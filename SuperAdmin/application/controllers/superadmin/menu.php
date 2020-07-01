@@ -1,14 +1,14 @@
 <?php
 
-class Makanan extends CI_Controller{
+class Menu extends CI_Controller{
 
 	public function index()
 	{
-		$data['makanan']  = $this->makanan_model->tampil_data()->result();
+		$data['menu']  = $this->menu_model->tampil_data()->result();
 		$this->load->view('templates_superadmin/header');
 		$this->load->view('templates_superadmin/sidebar');
 		$this->load->view('templates_superadmin/footer');
-		$this->load->view('superadmin/makanan', $data);
+		$this->load->view('superadmin/menu', $data);
 
 	}
 
@@ -26,7 +26,7 @@ class Makanan extends CI_Controller{
 		$this->load->view('templates_superadmin/header');
 		$this->load->view('templates_superadmin/sidebar');
 		$this->load->view('templates_superadmin/footer');
-		$this->load->view('superadmin/makanan_form', $data);
+		$this->load->view('superadmin/menu_form', $data);
 	}
 
 	public function input_aksi()
@@ -42,17 +42,30 @@ class Makanan extends CI_Controller{
 					'nama_barang' => $this->input->post('nama_barang', TRUE),
 					'harga' => $this->input->post('harga', TRUE),
 					'stok' => $this->input->post('stok', TRUE),
-					'foto' => $this->input->post('foto', TRUE),
 			);
 
-			$this->makanan_model->input_data($data);
-			$this->session->set_flashdata('pesan','<div class="alert alert-danger alert-dimissible fade show" role="alert">
-					Data Menu Makanan Berhasil Ditambahkan!
+			$foto = $_FILES['foto'];
+
+					if ($foto ==''){}else{
+						$config['upload_path']	 ='./assets/foto';
+						$config['allowed_types'] ='jpg|png|gif|jpeg';
+
+						$this->load->library('upload', $config);
+						if(!$this->upload->do_upload('foto')){
+							echo "Upload Gagal"; die();
+						}else{
+							$foto=$this->upload->data('file_name');
+						}
+					}
+
+			$this->menu_model->input_data($data);
+			$this->session->set_flashdata('pesan','<div class="alert alert-success alert-dimissible fade show" role="alert">
+					Data Menu Berhasil Ditambahkan!
 					<button type="button" class="close" data-dismiss="alert aria-label="Close"><span
 					aria-hidden="true">&times;</span>
 					</button>
 				</div>');
-			redirect('superadmin/makanan');
+			redirect('superadmin/menu');
 		}
 	}
 
@@ -69,11 +82,11 @@ class Makanan extends CI_Controller{
 	public function update($id)
 	{
 		$where = array('id_barang' => $id);
-		$data['tb_barang'] =$this->makanan_model->edit_data($where,'tb_barang')->result();
+		$data['tb_barang'] =$this->menu_model->edit_data($where,'tb_barang')->result();
 		$this->load->view('templates_superadmin/header');
 		$this->load->view('templates_superadmin/sidebar');
 		$this->load->view('templates_superadmin/footer');
-		$this->load->view('superadmin/makanan_update', $data);
+		$this->load->view('superadmin/menu_update', $data);
 
 	}
 
@@ -85,7 +98,18 @@ class Makanan extends CI_Controller{
 		$nama_barang = $this->input->post('nama_barang');
 		$harga = $this->input->post('harga');
 		$stok = $this->input->post('stok');
-		$foto = $this->input->post('foto');
+		$foto = $_FILES['foto'];
+		if ($foto=''){}else{
+			$config['upload_path']	 ='./assets/foto';
+			$config['allowed_types'] ='jpg|png|gif|jpeg';
+
+			$this->load->library('upload', $config);
+			if(!$this->upload->do_upload('foto')){
+				echo "Upload Gagal"; die();
+			}else{
+				$foto=$this->upload->data('file_name');
+			}
+		}
 
 		$data = array(
 				'id_jenis' => $id_jenis,
@@ -100,28 +124,28 @@ class Makanan extends CI_Controller{
 			'id_barang' => $id
 		);
 
-		$this->makanan_model->update_data($where, 'tb_barang', $data);
+		$this->menu_model->update_data($where, 'tb_barang', $data);
 
 		$this->session->set_flashdata('pesan','<div class="alert alert-success alert-dimissible fade show" role="alert">
-					Data Menu Makanan Berhasil Diupdate!
+					Data Menu Berhasil Diupdate!
 					<button type="button" class="close" data-dismiss="alert aria-label="Close"><span
 					aria-hidden="true">&times;</span>
 					</button>
 				</div>');
-		redirect('superadmin/makanan');
+		redirect('superadmin/menu');
 	}
 
 	public function delete($id)
 	{
 		$where = array('id_barang' => $id);
-		$this->makanan_model->hapus_data($where,'tb_barang');
+		$this->menu_model->hapus_data($where,'tb_barang');
 		$this->session->set_flashdata('pesan','<div class="alert alert-danger alert-dimissible fade show" role="alert">
-					Data Menu Makanan Berhasil Dihapus!
+					Data Menu Berhasil Dihapus!
 					<button type="button" class="close" data-dismiss="alert aria-label="Close"><span
 					aria-hidden="true">&times;</span>
 					</button>
 				</div>');
-		redirect('superadmin/makanan');
+		redirect('superadmin/menu');
 
 	}
 

@@ -24,37 +24,33 @@
           <span>Beranda</span></a>
       </li>
 
-      <!-- Nav Item - Pages Collapse Menu -->
+      <!-- Nav Item - Charts -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link" href="<?php echo base_url('superadmin/kedai')?>">
           <i class="fas fa-store"></i>
-          <span>Daftar Kedai</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Menu:</h6>
-            <a class="collapse-item" href="<?php echo base_url('superadmin/makanan')?>">Makanan</a>
-            <a class="collapse-item" href="cards.html">Minuman</a>
-          </div>
-        </div>
+          <span>Daftar Kedai</span></a>
       </li>
 
-      <!-- Nav Item - Charts -->
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo base_url('superadmin/menu')?>">
+          <i class="fas fa-utensils"></i>
+          <span>Menu</span></a>
+      </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="<?php echo base_url('superadmin/pemilik_kedai')?>">
           <i class="fas fa-user-friends"></i>
           <span>Pemilik Kedai</span></a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="<?php echo base_url('superadmin/kurir')?>">
           <i class="fas fa-biking"></i>
           <span>Kurir</span></a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="<?php echo base_url('superadmin/pelanggan')?>">
           <i class="fas fa-users"></i>
           <span>Pelanggan</span></a>
       </li>
