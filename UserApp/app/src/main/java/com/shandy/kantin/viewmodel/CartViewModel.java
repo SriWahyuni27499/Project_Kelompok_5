@@ -16,7 +16,7 @@ import com.shandy.kantin.utility.ObservableObject;
 
 import java.util.List;
 
-import static com.shandy.kantin.ui.MenuActivity.INTENT_UPDATE_LIST;
+import static com.shandy.kantin.ui.menu.MenuActivity.INTENT_UPDATE_LIST;
 
 public class CartViewModel extends AndroidViewModel {
 

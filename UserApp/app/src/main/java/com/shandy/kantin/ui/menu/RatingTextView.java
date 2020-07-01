@@ -1,4 +1,4 @@
-package com.shandy.kantin.ui;
+package com.shandy.kantin.ui.menu;
 
 import android.content.Context;
 import android.content.res.TypedArray;

@@ -1,4 +1,4 @@
-package com.shandy.kantin.akun;
+package com.shandy.kantin.ui.akun;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -17,7 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import com.shandy.kantin.R;
-import com.shandy.kantin.ui.MenuActivity;
+import com.shandy.kantin.ui.menu.MenuActivity;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText ID, password;
@@ -80,6 +80,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (ID.getText().length() > 0 && password.getText().length() > 0) {
                     Toast.makeText(LoginActivity.this, ID.getText() + " " + password.getText(), Toast.LENGTH_LONG).show();
                     startActivity(new Intent(LoginActivity.this, MenuActivity.class));
+                    finish();
                 }
             }
         });

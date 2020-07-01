@@ -17,14 +17,14 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.shandy.kantin.R;
 import com.shandy.kantin.model.FoodDetails;
 import com.shandy.kantin.dbutilities.AppDatabase;
-import com.shandy.kantin.ui.IndividualActivity;
-import com.shandy.kantin.ui.RatingTextView;
+import com.shandy.kantin.ui.menu.IndividualActivity;
+import com.shandy.kantin.ui.menu.RatingTextView;
 import com.shandy.kantin.utility.GlideApp;
 import com.shandy.kantin.utility.ObservableObject;
 
 import java.util.List;
 
-import static com.shandy.kantin.ui.MenuActivity.INTENT_UPDATE_FOOD;
+import static com.shandy.kantin.ui.menu.MenuActivity.INTENT_UPDATE_FOOD;
 
 public class FoodListAdapter extends RecyclerView.Adapter<FoodListAdapter.RecyclerViewHolders> {
 

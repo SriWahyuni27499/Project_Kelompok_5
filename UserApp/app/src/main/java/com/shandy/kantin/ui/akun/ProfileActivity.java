@@ -1,4 +1,4 @@
-package com.shandy.kantin.akun;
+package com.shandy.kantin.ui.akun;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.shandy.kantin.R;
-import com.shandy.kantin.ui.MenuActivity;
+import com.shandy.kantin.ui.menu.MenuActivity;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -50,6 +50,7 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ProfileActivity.this, MenuActivity.class));
+                finish();
             }
         });
 

@@ -1,4 +1,4 @@
-package com.shandy.kantin.akun;
+package com.shandy.kantin.ui.akun;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import com.shandy.kantin.R;
-import com.shandy.kantin.ui.MenuActivity;
+import com.shandy.kantin.ui.menu.MenuActivity;
 
 public class DaftarActivity extends AppCompatActivity {
     private EditText nama, ID, password;
@@ -69,6 +69,7 @@ public class DaftarActivity extends AppCompatActivity {
                 if (nama.getText().length() > 0 && ID.getText().length() > 0 && password.getText().length() > 0) {
                     Toast.makeText(DaftarActivity.this, nama.getText() + " " + ID.getText() + " " + password.getText(), Toast.LENGTH_LONG).show();
                     startActivity(new Intent(DaftarActivity.this, MenuActivity.class));
+                    finish();
                 }
             }
         });

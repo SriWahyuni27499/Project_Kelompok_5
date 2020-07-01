@@ -16,8 +16,8 @@ import com.shandy.kantin.services.repository.FoodRepository;
 
 import java.util.List;
 
-import static com.shandy.kantin.ui.MenuActivity.ACTION_SORT_BY_PRICE;
-import static com.shandy.kantin.ui.MenuActivity.ACTION_SORT_BY_RATING;
+import static com.shandy.kantin.ui.menu.MenuActivity.ACTION_SORT_BY_PRICE;
+import static com.shandy.kantin.ui.menu.MenuActivity.ACTION_SORT_BY_RATING;
 
 
 public class FoodViewModel extends AndroidViewModel {

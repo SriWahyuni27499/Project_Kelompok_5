@@ -13,9 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-
         <activity
-            android:name=".HomeActivity"
+            android:name=".ui.HomeActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,27 +23,27 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".akun.LoginActivity"
+            android:name=".ui.akun.LoginActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".akun.DaftarActivity"
+            android:name=".ui.akun.DaftarActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".ui.MenuActivity"
+            android:name=".ui.menu.MenuActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".ui.IndividualActivity"
+            android:name=".ui.menu.IndividualActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".ui.CartActivity"
+            android:name=".ui.menu.CartActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".akun.ProfileActivity"
+            android:name=".ui.akun.ProfileActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
     </application>

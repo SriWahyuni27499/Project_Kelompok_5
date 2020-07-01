@@ -1,4 +1,4 @@
-package com.shandy.kantin.ui;
+package com.shandy.kantin.ui.menu;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import android.content.Context;
@@ -21,10 +21,8 @@ import android.view.animation.LayoutAnimationController;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
-import com.shandy.kantin.HomeActivity;
 import com.shandy.kantin.R;
-import com.shandy.kantin.akun.DaftarActivity;
-import com.shandy.kantin.akun.ProfileActivity;
+import com.shandy.kantin.ui.akun.ProfileActivity;
 import com.shandy.kantin.model.CartItem;
 import com.shandy.kantin.model.FoodDetails;
 import com.shandy.kantin.ui.adapter.FoodListAdapter;
