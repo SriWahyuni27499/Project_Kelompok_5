@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "269608133597",
+    "firebase_url": "https://kantin-35301.firebaseio.com",
+    "project_id": "kantin-35301",
+    "storage_bucket": "kantin-35301.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:269608133597:android:492e8f5abb5157acaccc34",
+        "android_client_info": {
+          "package_name": "com.kelompok5.kantin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "269608133597-f25k5qn7fblh9m9ced9u8dicofpm1l23.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kelompok5.kantin",
+            "certificate_hash": "13bbefd6fa2e353b235d4374ae465f2569bdb671"
+          }
+        },
+        {
+          "client_id": "269608133597-qg5on8bm94hr9n6g3a6dquqrrrvhd6kj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZwdCmpRQttFMUBFGBxjfW-lznfsVixDE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "269608133597-qg5on8bm94hr9n6g3a6dquqrrrvhd6kj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
