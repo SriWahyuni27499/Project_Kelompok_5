@@ -28,10 +28,8 @@ import java.util.List;
 public class CartActivity extends AppCompatActivity {
 
     RecyclerView cartList;
-    TextView tDiscount,hDiscount,tItemsCost,tDelivery,hDelivery,tGrandTotal;
+    TextView tItemsCost,tDelivery,hDelivery,tGrandTotal;
     TextInputLayout eCouponLayout;
-    AppCompatButton bApply;
-    AppCompatImageView iRemoveCoupon;
     CartViewModel cartViewModel;
     Observer<List<CartItem>> cartObserver;
     Observer<Double> costObserver;
@@ -104,10 +102,6 @@ public class CartActivity extends AppCompatActivity {
             hDelivery.setText(getString(R.string.delivery_charges));
             tDelivery.setText(" + "+getString(R.string.rupiah_simbol)+" "+ String.valueOf(cartViewModel.getDeliveryCost()));
             tDelivery.setPaintFlags(0);
-        }else{
-            hDelivery.setText(getString(R.string.delivery_charges)+" ( Free )");
-            tDelivery.setText(" + "+getString(R.string.rupiah_simbol)+" 3000");
-            tDelivery.setPaintFlags(tDelivery.getPaintFlags()| Paint.STRIKE_THRU_TEXT_FLAG);
         }
     }
 

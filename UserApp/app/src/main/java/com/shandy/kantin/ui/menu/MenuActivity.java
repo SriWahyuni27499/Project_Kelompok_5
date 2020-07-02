@@ -80,8 +80,8 @@ public class MenuActivity extends AppCompatActivity implements java.util.Observe
         controller = AnimationUtils.loadLayoutAnimation(foodList.getContext(), R.anim.layout_slide_from_bottom);
         foodList.setAdapter(foodListAdapter);
         foodList.scheduleLayoutAnimation();
-    }
 
+    }
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
