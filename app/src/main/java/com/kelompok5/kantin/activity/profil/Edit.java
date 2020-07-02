@@ -134,7 +134,7 @@ public class Edit extends AppCompatActivity {
                         .addFormDataPart("username", userString)
                         .build();
                 final OkHttpClient okHttpClient = new OkHttpClient();
-                Request request = new Request.Builder().url("http://172.17.100.2/kantin/driver_info").post(reqBody).build();
+                Request request = new Request.Builder().url("http://66.42.60.70/tanco/driver_info").post(reqBody).build();
                 okHttpClient.newCall(request).enqueue(new Callback() {
                     @Override
                     public void onFailure(@NotNull Call call, @NotNull IOException e) {
@@ -156,7 +156,7 @@ public class Edit extends AppCompatActivity {
                                             aalam.setText(jsonObject.getJSONArray("data").getJSONObject(0).getString("alamat"));
                                             eemail.setText(jsonObject.getJSONArray("data").getJSONObject(0).getString("email"));
                                             hhp.setText(jsonObject.getJSONArray("data").getJSONObject(0).getString("no_telephone"));
-                                            ffoto.setText(jsonObject.getJSONArray("data").getJSONObject(0).getString("foto"));
+//                                            ffoto.setText(jsonObject.getJSONArray("data").getJSONObject(0).getString("foto"));
                                         }catch (Exception e){
                                             e.printStackTrace();
                                         }
@@ -266,7 +266,7 @@ public class Edit extends AppCompatActivity {
 
                                         RequestBody reqBody = RequestBody.create(jsonObject.toString(), MediaType.parse("application/json; charset=utf-8"));
                                         OkHttpClient okHttpClient = new OkHttpClient();
-                                        Request request = new Request.Builder().url("http://172.17.100.2/kantin/driver").put(reqBody).build();
+                                        Request request = new Request.Builder().url("http://66.42.60.70/tanco/driver").put(reqBody).build();
                                         okHttpClient.newCall(request).enqueue(new Callback() {
                                             @Override
                                             public void onFailure(@NotNull Call call, @NotNull IOException e) {

@@ -3,6 +3,8 @@ package com.kelompok5.kantin.activity.login;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -43,6 +45,8 @@ public class LoginActivity extends AppCompatActivity {
     Button buttonLogin;
 
     //Declaration SqliteHelper
+
+    ProgressDialog xdig;
 
 
     boolean isUserExist = false;
@@ -85,7 +89,20 @@ public class LoginActivity extends AppCompatActivity {
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        xdig = new ProgressDialog(LoginActivity.this);
+                        xdig.setMessage("Sedang mengambil data");
+                        xdig.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                            @Override
+                            public void onDismiss(DialogInterface dialog) {
 
+                            }
+                        });
+                        buttonLogin.setActivated(false);
+                    }
+                });
                 //Check user input is correct or not
                 if (validate()) {
                     RequestBody requestBody = new MultipartBody.Builder()
@@ -100,11 +117,13 @@ public class LoginActivity extends AppCompatActivity {
                     client.newCall(request).enqueue(new Callback() {
                         @Override
                         public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                            System.out.println(e.getMessage());
                             LoginActivity.this.runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
                                     AlertDialog.Builder build = new AlertDialog.Builder(LoginActivity.this);
                                     build.setTitle("Gagal").setMessage("Tidak ada jaringan konektivitas").show();
+
                                 }
                             });
                         }
@@ -141,6 +160,7 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     });
                 }
+                xdig.hide();
             }
         });
 

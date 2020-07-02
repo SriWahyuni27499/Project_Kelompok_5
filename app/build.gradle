@@ -45,4 +45,6 @@ dependencies {
     //import circle image
     implementation 'de.hdodenhof:circleimageview:2.2.0'
     implementation 'com.google.firebase:firebase-database:19.3.0'
+    //voley
+    implementation 'com.android.volley:volley:1.1.0'
 }

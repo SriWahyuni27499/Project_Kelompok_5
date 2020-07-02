@@ -62,8 +62,7 @@
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:id="@+id/notif"
-                        android:src="@drawable/ic_whatsapp"/>
+                        android:id="@+id/notif" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.appcompat.widget.Toolbar>

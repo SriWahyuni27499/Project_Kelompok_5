@@ -1,4 +1,4 @@
-package com.kelompok5.kantin.activity.history;
+package com.kelompok5.kantin.activity.pesananan;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +11,7 @@ import android.widget.ExpandableListView;
 
 import com.kelompok5.kantin.R;
 import com.kelompok5.kantin.activity.beranda.Beranda;
+import com.kelompok5.kantin.activity.history.MainAdapter;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
@@ -29,8 +30,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-
-class Makanan{
+class Makanann{
     public String nama_makanan;
     public int harga_makanan;
 
@@ -52,12 +52,12 @@ class Makanan{
 }
 
 
-class HistoriRecord{
+class HistoriPesanan{
     public String id_trx;
     public String id_customer;
     public Integer total_harga;
     public Integer ongkir;
-    public List<Makanan> makanan;
+    public List<Makanann> makanan;
 
     public String getId_trx() {
         return id_trx;
@@ -91,21 +91,21 @@ class HistoriRecord{
         this.ongkir = ongkir;
     }
 
-    public List<Makanan> getMakanan() {
+    public List<Makanann> getMakanan() {
         return makanan;
     }
 
-    public void setMakanan(List<Makanan> makanan) {
+    public void setMakanan(List<Makanann> makanan) {
         this.makanan = makanan;
     }
 }
 
 
-public class Histori extends AppCompatActivity {
+public class Pesanan extends AppCompatActivity {
 
     ExpandableListView expandableListView;
-    List<String> listGroup;
-    HashMap<String,List<String>> listItem;
+    List<String> listGroupp;
+    HashMap<String,List<String>> listItemm;
     MainAdapter adapter;
     Button kembalii;
 
@@ -113,21 +113,21 @@ public class Histori extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_histori);
+        setContentView(R.layout.activity_pesanan);
 
-        expandableListView = findViewById(R.id.expandableListView);
-        listGroup = new ArrayList<>();
-        listItem = new HashMap<>();
-        adapter= new MainAdapter(this,listGroup,listItem);
+        expandableListView = findViewById(R.id.expandableListVieww);
+        listGroupp = new ArrayList<>();
+        listItemm = new HashMap<>();
+        adapter= new MainAdapter(this,listGroupp,listItemm);
         expandableListView.setAdapter(adapter);
         initListData();
 
 
-        kembalii= findViewById(R.id.buttonkeberanda);
+        kembalii= findViewById(R.id.buttonkeberandaa);
         kembalii.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent back = new Intent(Histori.this, Beranda.class);
+                Intent back = new Intent(com.kelompok5.kantin.activity.pesananan.Pesanan.this, Beranda.class);
                 startActivity(back);
 
             }
@@ -154,7 +154,7 @@ public class Histori extends AppCompatActivity {
                 OkHttpClient client = new OkHttpClient();
                 RequestBody req = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonObject.toString());
 
-                Request reqq = new Request.Builder().url("http://172.17.100.2/kantin/driver_trx_info").post(req).build();
+                Request reqq = new Request.Builder().url("http://172.17.100.2/kantin/driver_trx_info_belum").post(req).build();
 
                 client.newCall(reqq).enqueue(new Callback() {
                     @Override
@@ -169,7 +169,7 @@ public class Histori extends AppCompatActivity {
                             JSONArray jsonArray = jsonObject.getJSONArray("data");
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-                                listGroup.add("ID Transaksi : "+ jsonObject1.getString("id_trx"));
+                                listGroupp.add("ID Transaksi : "+ jsonObject1.getString("id_trx"));
                                 List<String> items = new ArrayList<>();
 
                                 items.add("ID Customer : " + jsonObject1.getString("id_customer"));
@@ -188,8 +188,8 @@ public class Histori extends AppCompatActivity {
 
                                 items.add(builderMakanan);
 
-                                listItem.put("ID Transaksi : "+ jsonObject1.getString("id_trx"), items);
-                                Histori.this.runOnUiThread(new Runnable() {
+                                listItemm.put("ID Transaksi : "+ jsonObject1.getString("id_trx"), items);
+                                com.kelompok5.kantin.activity.pesananan.Pesanan.this.runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
                                         adapter.notifyDataSetChanged();
@@ -207,6 +207,8 @@ public class Histori extends AppCompatActivity {
 
         Thread x = new Thread(runthis);
         x.start();
+
+
 
 
     }

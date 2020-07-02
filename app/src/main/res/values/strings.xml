@@ -18,7 +18,7 @@
     <string name="group3">G3</string>
     <string name="group4">G4</string>
     <string name="group5">G5</string>
-    
+
     <string-array name="group1">
         <item>I1</item>
     </string-array>
@@ -33,6 +33,6 @@
         <item>I2</item>
         <item>I3</item>
     </string-array>
-    
-    
+
+
 </resources>

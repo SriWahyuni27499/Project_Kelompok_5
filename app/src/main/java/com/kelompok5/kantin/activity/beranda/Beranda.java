@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.kelompok5.kantin.R;
 import com.kelompok5.kantin.activity.history.Histori;
 import com.kelompok5.kantin.activity.login.LoginActivity;
+import com.kelompok5.kantin.activity.pesananan.Pesanan;
 import com.kelompok5.kantin.activity.profil.Profil;
 
 import org.jetbrains.annotations.NotNull;
@@ -188,7 +189,7 @@ public class Beranda extends AppCompatActivity {
         map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent petaa = new Intent(Beranda.this, com.kelompok5.kantin.Map.class);
+                Intent petaa = new Intent(Beranda.this, Pesanan.class);
                 startActivity(petaa);
             }
         });

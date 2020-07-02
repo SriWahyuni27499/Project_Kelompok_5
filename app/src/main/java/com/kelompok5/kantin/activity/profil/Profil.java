@@ -81,7 +81,7 @@ public class Profil extends AppCompatActivity {
                                             .addFormDataPart("username", userString)
                                             .build();
                 OkHttpClient okHttpClient = new OkHttpClient();
-                Request request = new Request.Builder().url("http://172.17.100.2/kantin/driver_info").post(reqBody).build();
+                Request request = new Request.Builder().url("http://66.42.60.70/tanco/driver_info").post(reqBody).build();
                 okHttpClient.newCall(request).enqueue(new Callback() {
                     @Override
                     public void onFailure(@NotNull Call call, @NotNull IOException e) {
@@ -107,7 +107,7 @@ public class Profil extends AppCompatActivity {
                                         }finally{
                                             try{
                                                 OkHttpClient newClient = new OkHttpClient();
-                                                Request req = new Request.Builder().url("http://172.17.100.2/kantin/assets/fotoprofil/"+userString+"/"+userString+".jpg").build();
+                                                Request req = new Request.Builder().url("http://66.42.60.70/tanco/assets/fotoprofil/"+userString+"/"+userString+".jpg").build();
                                                 newClient.newCall(req).enqueue(new Callback() {
                                                     @Override
                                                     public void onFailure(@NotNull Call call, @NotNull IOException e) {

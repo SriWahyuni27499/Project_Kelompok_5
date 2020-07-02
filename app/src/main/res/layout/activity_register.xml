@@ -36,9 +36,10 @@
                 android:id="@+id/editTextNama"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:maxLength="55"
+                android:maxLength="30"
                 android:hint="@string/nama_lengkap"
-                android:inputType="text" />
+                android:inputType="textCapCharacters"
+                android:textAllCaps="true"/>
         </com.google.android.material.textfield.TextInputLayout>
         //iki alamate
         <com.google.android.material.textfield.TextInputLayout
@@ -52,6 +53,7 @@
                 android:id="@+id/editTextalamat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:maxLength="50"
                 android:hint="alamat"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -85,6 +87,7 @@
                 android:id="@+id/editTextSandi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:maxLength="20"
                 android:hint="@string/kata_sandi"
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -100,6 +103,7 @@
                 android:id="@+id/editTextemail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:maxLength="30"
                 android:hint="Email"
                 android:inputType="textEmailAddress" />
         </com.google.android.material.textfield.TextInputLayout>

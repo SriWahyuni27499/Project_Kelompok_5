@@ -36,8 +36,9 @@
                 android:id="@+id/editTextNim"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/nim"
-                android:inputType="textEmailAddress" />
+                android:hint="NIM"
+                android:maxLength="10"
+                android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -54,6 +55,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/kata_sandi"
+                android:maxLength="20"
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
