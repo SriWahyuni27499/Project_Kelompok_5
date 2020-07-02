@@ -11,6 +11,22 @@ class Driver_model extends CI_Model {
 		public function getDriverByUsername($username){
 			return $this->db->get_where('tb_driver', ["username" => $username])->result_array();
 		}
+		public function vauname($username){
+			$cekuser =$this->db->select('*')->from('tb_driver')->where('username', $username)->get()->result_array();
+			if(count($cekuser) > 0){
+				return true;
+			}
+			return false;
+		}
+		public function vamail($mmail){
+			$cekmail =$this->db->select('*')->from('tb_driver')->where('email', $mmail)->get()->result_array();
+			if(count($cekmail) > 0){
+				return true;
+			}
+			return false;
+		}
+
+
 
     public function post_Driver($Driver){
 
@@ -44,6 +60,15 @@ class Driver_model extends CI_Model {
       
       public function get_makanan($id_makanan){
 				return $this->db->select("nama_barang, harga")->from("tb_barang")->where("id_barang", $id_makanan)->get()->result_array();
-      }
+	  }
+	  public function get_status(){
+		// return $this->db->select("status")->from("tb_trx")->where("status","Belum Terkirim")->get()->result_array();
+		return $this->db->query("SELECT * FROM tb_trx WHERE status = 'Belum Terkirim' ORDER BY RAND() LIMIT 1")->result_array();
+	}
+		public function Driver_statuss(){
+			return $this->db->query("SELECT * FROM tb_driver_status WHERE status = 'off' ")->get()->result_array();
+		}
+	
+	
 
 }

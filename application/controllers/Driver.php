@@ -11,6 +11,19 @@ class Driver extends RestController {
         parent::__construct();
         $this->load->model('Driver_model','Driver');
 	}
+
+	public function upload(){
+		$file_path = "/assets/fotoprofil/";
+     
+		$file_path = $file_path . basename( $_FILES['uploaded_file']['name']);
+		if(move_uploaded_file($_FILES['uploaded_file']['tmp_name'], $file_path)) {
+			$result = array("result" => "success");
+		} else{
+			$result = array("result" => "error");
+		}
+	
+		echo json_encode($result);
+	}
 	
 	public function base64_to_jpeg($base64_string, $output_file) {
 		// open the output file for writing
@@ -66,6 +79,23 @@ class Driver extends RestController {
              "foto"  => $this->post('foto')
         ];
 
+		if($this->Driver->vauname($Driver["username"])){
+			$this->response( [
+                'status' => false,
+                'message' => 'username telah didaftarkan'
+			], 400 );
+			exit;
+		}
+
+		if($this->Driver->vamail($Driver["email"])){
+			$this->response( [
+                'status' => false,
+                'message' => 'email telah didaftarkan'
+			], 400 );
+			exit;
+		}
+		
+
         if( $this->Driver->post_Driver($Driver) > 0 ){
             $this->response( [
                 'status' => true,
@@ -105,23 +135,5 @@ class Driver extends RestController {
 
     }
 
-        // $id_driver = $this->Driver->put_Driver();
-        // $Driver = $this->Driver->put_Driver();
-
-        // $this->db->where('id_driver', $id_driver);
-        // $update = $this->db->update('tb_driver', $Driver);
-
-        // if ($update) {
-        //      $this->response( [
-        //         'status' => true,
-        //         'message' => 'mantull'
-            
-        //     ], 201 );
-        // } else {
-        //     $this->response( [
-        //         'status' => false,
-        //         'message' => 'No users were found'
-        //     ], 400 );
-        // }
     }
 }
