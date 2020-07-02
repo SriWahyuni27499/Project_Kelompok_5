@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/map_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <fragment xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MapsActivity"/>
+
+    <FrameLayout
+        android:id="@+id/pin_view_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/line_top_margin"
+        android:background="@drawable/line_background"/>
+
+    <FrameLayout
+        android:id="@+id/pin_view_circle"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/circle_background_moving">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_margin="@dimen/inner_circle_margin"
+            android:layout_width="@dimen/inner_circle_radius"
+            android:layout_height="@dimen/inner_circle_radius"
+            android:layout_gravity="top|center_horizontal"
+            android:gravity="center"
+            android:text="3 min"
+            android:textSize="@dimen/text_size"
+            android:textColor="@android:color/black"/>
+
+        <ProgressBar
+            android:id="@+id/profile_loader"
+            android:layout_margin="@dimen/inner_circle_margin"
+            android:layout_width="@dimen/inner_circle_radius"
+            android:layout_height="@dimen/inner_circle_radius"
+            android:indeterminate="true"
+            android:layout_gravity="top|center_horizontal"
+            android:visibility="gone"
+            android:contentDescription="@null"/>
+
+    </FrameLayout>
+</FrameLayout>
