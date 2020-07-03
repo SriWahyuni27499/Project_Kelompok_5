@@ -2,6 +2,7 @@ package com.shandy.kantin.ui.akun;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
@@ -17,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import com.shandy.kantin.R;
+import com.shandy.kantin.services.DatabaseHelper;
 import com.shandy.kantin.ui.menu.MenuActivity;
 
 public class LoginActivity extends AppCompatActivity {
@@ -24,6 +26,8 @@ public class LoginActivity extends AppCompatActivity {
     private TextView forgot_password_text_view;
     private RelativeLayout login_button;
     private CardView login_button_card_view;
+    String Username = "Shandy123", Password = "Shandy123";
+    DatabaseHelper MyDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,15 @@ public class LoginActivity extends AppCompatActivity {
         forgotPasswordOnClick();
         loginOnClick();
         inputChange();
+
+        MyDB = new DatabaseHelper(this);
+        Cursor res = MyDB.LihatData();
+        if(res.moveToNext()){
+            finish();
+            Intent intent = new Intent(this, MenuActivity.class);
+            startActivity(intent);
+    }
+
     }
 
     private void setType() {
@@ -77,13 +90,31 @@ public class LoginActivity extends AppCompatActivity {
         login_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (ID.getText().length() > 0 && password.getText().length() > 0) {
-                    Toast.makeText(LoginActivity.this, ID.getText() + " " + password.getText(), Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(LoginActivity.this, MenuActivity.class));
-                    finish();
-                }
+                String User = ID.getText().toString();
+                String Pass = password.getText().toString();
+
+//                if (ID.getText().length() > 0 && password.getText().length() > 0) {
+//                    Toast.makeText(LoginActivity.this, ID.getText() + " " + password.getText(), Toast.LENGTH_LONG).show();
+//                    startActivity(new Intent(LoginActivity.this, MenuActivity.class));
+//                    finish();
+//                }
+
+                if(User.equals("") || Pass.equals("")){
+                    Toast.makeText(LoginActivity.this, "Form Masih Kosong!", Toast.LENGTH_SHORT).show();
+                }else{
+                    if(!User.equals(Username) || !Pass.equals(Password)){
+                        Toast.makeText(LoginActivity.this, "Username atau Password Salah!", Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(LoginActivity.this, "Berhasil Login!", Toast.LENGTH_SHORT).show();
+                        MyDB.SimpanData(User, Pass);
+                        finish();
+                        Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+                        startActivity(intent);
+                    }
             }
-        });
+        }
+        }
+        );
     }
 
     private void inputChange() {
