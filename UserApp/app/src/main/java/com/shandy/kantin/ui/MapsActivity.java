@@ -1,4 +1,4 @@
-package com.kelompok5.kantin.activity.map;
+package com.shandy.kantin.ui;
 
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -19,8 +19,9 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
-import com.kelompok5.kantin.R;
+import com.shandy.kantin.R;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
@@ -69,9 +70,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         mGoogleMap = googleMap;
 
-        mGoogleMap.setOnCameraMoveStartedListener(new GoogleMap.OnCameraMoveStartedListener() {
+        mGoogleMap.setOnCameraChangeListener(new GoogleMap.OnCameraChangeListener() {
             @Override
-            public void onCameraMoveStarted(int i) {
+            public void onCameraChange(CameraPosition cameraPosition) {
                 isMoving = true;
                 textView.setVisibility(View.GONE);
                 progress.setVisibility(View.GONE);
@@ -88,11 +89,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         });
 
-        mGoogleMap.setOnCameraIdleListener(new GoogleMap.OnCameraIdleListener(){
-
+        mGoogleMap.setOnCameraChangeListener(new GoogleMap.OnCameraChangeListener() {
             @Override
-            public void onCameraIdle() {
-
+            public void onCameraChange(CameraPosition cameraPosition) {
                 isMoving = false;
                 textView.setVisibility(View.INVISIBLE);
                 progress.setVisibility(View.VISIBLE);

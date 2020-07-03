@@ -46,14 +46,6 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        ic_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(ProfileActivity.this, MenuActivity.class));
-                finish();
-            }
-        });
-
         reviewbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,6 +55,14 @@ public class ProfileActivity extends AppCompatActivity {
                 personalinfobtn.setTextColor(getResources().getColor(R.color.grey));
                 reviewbtn.setTextColor(getResources().getColor(R.color.colorAccent));
 
+            }
+        });
+
+        ic_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ProfileActivity.this, MenuActivity.class));
+                finish();
             }
         });
     }
