@@ -10,13 +10,15 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.shandy.kantin.R;
+import com.shandy.kantin.services.DatabaseHelper;
 import com.shandy.kantin.ui.menu.MenuActivity;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    LinearLayout personalinfo, review;
+    LinearLayout personalinfo, review, Logout;
     TextView personalinfobtn, reviewbtn;
     ImageView ic_back;
+    DatabaseHelper MyDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +65,18 @@ public class ProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 startActivity(new Intent(ProfileActivity.this, MenuActivity.class));
                 finish();
+            }
+        });
+
+        MyDB = new DatabaseHelper(this);
+        Logout = findViewById(R.id.logout);
+        Logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MyDB.HapusData();
+                finish();
+                Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
+                startActivity(intent);
             }
         });
     }
