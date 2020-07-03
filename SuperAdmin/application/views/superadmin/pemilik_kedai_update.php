@@ -1,11 +1,13 @@
 <div class="container-fluid">
-	<div class="alert alert-success" role="alert">
-        <i class="fas fa-utensils"> </i>Update Data Pemilik Kedai
-    </div>
+<nav class="alert alert-success" >
+
+        <center><i class="fas fa-user-friends"> </i>UPDATE DATA PEMILIK KEDAI</center>
+
+</nav>
 
     <?php foreach($tb_admin as $pk) : ?>
 
-    	<form method="post" action="<?php echo base_url('superadmin/pemilik_kedai/update_aksi')?>">
+    	<?php echo form_open_multipart('superadmin/pemilik_kedai/input_aksi');?>
 
    			<input type="hidden" value="<?= $pk->id_admin ?>" name="id_admin"> 		
 
@@ -42,13 +44,13 @@
             </div>
 
     		<div class="form-group">
-    			<label>Foto</label>
-    			<input type="text" name="foto" class="form-control" value="<?php echo $pk->foto?>">
-    		</div>
+                <label>Upload Foto</label>
+                <input type="file" name="foto" class="form-control" value="<?php echo $pk->foto?>">
+            </div>
 
     		<button type="submit" class="btn btn-primary">Simpan</button>
     		
-    	</form>
+    	<?php echo form_close(); ?>
 
    <?php endforeach;?>
 </div>

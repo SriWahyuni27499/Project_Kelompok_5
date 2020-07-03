@@ -1,9 +1,11 @@
 <div class="container-fluid">
-	<div class="alert alert-success" role="alert">
-        <i class="fas fa-utensils"> </i>Input Kedai
-    </div>
+<nav class="alert alert-success" >
+
+        <center><i class="fas fa-store"> </i>INPUT DATA KEDAI</center>
+
+</nav>
 	
-	<form method="post" action="<?php echo base_url ('superadmin/kedai/input_aksi')?>">
+	<?php echo form_open_multipart('superadmin/kedai/input_aksi');?>
 		<div class="form-group">
 			<label>Kode Admin</label>
 			<input type="text" name="id_admin" placeholder="Masukkan Kode Admin" class="form-control">
@@ -29,12 +31,12 @@
 		</div>
 
 		<div class="form-group">
-			<label>Foto</label>
-			<input type="text" name="foto" placeholder="Masukkan Foto" class="form-control">
+			<label>Upload Foto</label>
+			<input type="file" name="foto"  class="form-control">
 			<?php echo form_error('foto', '<div class="text-danger small" ml-3>')?>
 		</div>
 
 		<button type="submit" class="btn btn-primary">Simpan</button>
-	</form>
+	<?php echo form_close(); ?>
 
 </div>

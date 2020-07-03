@@ -2,9 +2,14 @@
 
 class Menu extends CI_Controller{
 
+	public function __construct(){
+		parent::__construct();
+		$this->load->library('upload');
+	}
+
 	public function index()
 	{
-		$data['menu']  = $this->menu_model->tampil_data()->result();
+		$data['menu'] = $this->db->query("SELECT * FROM tb_barang br, tb_jenis js, tb_kedai kd WHERE br.id_jenis=js.id_jenis AND br.id_kedai=kd.id_kedai")->result();
 		$this->load->view('templates_superadmin/header');
 		$this->load->view('templates_superadmin/sidebar');
 		$this->load->view('templates_superadmin/footer');
@@ -44,15 +49,23 @@ class Menu extends CI_Controller{
 					'stok' => $this->input->post('stok', TRUE),
 			);
 
-			$foto = $_FILES['foto'];
+					$foto = $_FILES['foto']['name'];
 
 					if ($foto ==''){}else{
-						$config['upload_path']	 ='./assets/foto';
-						$config['allowed_types'] ='jpg|png|gif|jpeg';
+						echo $_SERVER['DOCUMENT_ROOT'];
+						//$dir = str_replace("\\", "/", FCPATH);
 
-						$this->load->library('upload', $config);
+						print_r(is_dir($_SERVER['DOCUMENT_ROOT'] . '/SuperAdmin/assets/foto/menu/'));
+						print_r(is_writable($_SERVER['DOCUMENT_ROOT'] . '/SuperAdmin/assets/foto/menu/'));
+
+						$config['upload_path']	 = $_SERVER['DOCUMENT_ROOT'] . '/SuperAdmin/assets/foto/menu/';
+						$config['allowed_types'] = 'jpg|png|gif|jpeg';
+
+
+						$this->upload->initialize($config);
 						if(!$this->upload->do_upload('foto')){
-							echo "Upload Gagal"; die();
+							echo "Upload Gagal";
+							print_r($this->upload->display_errors()); die();
 						}else{
 							$foto=$this->upload->data('file_name');
 						}
@@ -76,7 +89,7 @@ class Menu extends CI_Controller{
 		$this->form_validation->set_rules('nama_barang', 'nama_barang', 'required', ['required' => 'Nama Makanan wajib diisi!']);
 		$this->form_validation->set_rules('harga', 'harga', 'required', ['required' => 'Harga wajib diisi!']);
 		$this->form_validation->set_rules('stok', 'stok', 'required', ['required' => 'Stok wajib diisi!']);
-		$this->form_validation->set_rules('foto', 'foto', 'required', ['required' => 'Foto wajib dimasukkan!']);
+		//$this->form_validation->set_rules('foto', 'foto', 'required', ['required' => 'Foto wajib dimasukkan!']);
 	}
 
 	public function update($id)

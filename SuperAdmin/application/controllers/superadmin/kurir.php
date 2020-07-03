@@ -1,6 +1,11 @@
 <?php
 
 class Kurir extends CI_Controller{
+	
+	public function __construct(){
+		parent::__construct();
+		$this->load->library('upload');
+	}
 
 	public function index()
 	{
@@ -43,8 +48,30 @@ class Kurir extends CI_Controller{
 					'username'     => $this->input->post('username', TRUE),
 					'email' 	   => $this->input->post('email', TRUE),
 					'no_telephone' => $this->input->post('no_telephone', TRUE),
-					'foto' 		   => $this->input->post('foto', TRUE),
 			);
+
+
+					$foto = $_FILES['foto']['name'];
+
+					if ($foto ==''){}else{
+						echo $_SERVER['DOCUMENT_ROOT'];
+						//$dir = str_replace("\\", "/", FCPATH);
+
+						print_r(is_dir($_SERVER['DOCUMENT_ROOT'] . '/SuperAdmin/assets/foto/kurir/'));
+						print_r(is_writable($_SERVER['DOCUMENT_ROOT'] . '/SuperAdmin/assets/foto/kurir/'));
+
+						$config['upload_path']	 = $_SERVER['DOCUMENT_ROOT'] . '/SuperAdmin/assets/foto/kurir/';
+						$config['allowed_types'] = 'jpg|png|gif|jpeg';
+
+
+						$this->upload->initialize($config);
+						if(!$this->upload->do_upload('foto')){
+							echo "Upload Gagal";
+							print_r($this->upload->display_errors()); die();
+						}else{
+							$foto=$this->upload->data('file_name');
+						}
+					}
 
 			$this->kurir_model->input_data($data);
 			$this->session->set_flashdata('pesan','<div class="alert alert-success alert-dimissible fade show" role="alert">
@@ -65,7 +92,7 @@ class Kurir extends CI_Controller{
 		$this->form_validation->set_rules('password', 'password', 'required', ['required' => 'Password wajib diisi!']);
 		$this->form_validation->set_rules('email', 'email', 'required', ['required' => 'Email wajib diisi!']);
 		$this->form_validation->set_rules('no_telephone', 'no_telephone', 'required', ['required' => 'No. Telephon wajib diisi!']);
-		$this->form_validation->set_rules('foto', 'foto', 'required', ['required' => 'Foto wajib dimasukkan!']);
+		// $this->form_validation->set_rules('foto', 'foto', 'required', ['required' => 'Foto wajib dimasukkan!']);
 	}
 
 	public function update($id)

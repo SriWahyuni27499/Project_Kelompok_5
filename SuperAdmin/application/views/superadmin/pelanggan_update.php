@@ -1,13 +1,15 @@
 <div class="container-fluid">
-	<div class="alert alert-success" role="alert">
-        <i class="fas fa-utensils"> </i>Update Data Pelanggan
-    </div>
+    <nav class="alert alert-success" >
+
+        <center><i class="fas fa-users"> </i>UPDATE DATA PELANGGAN</center>
+
+</nav>
 
     <?php foreach($tb_customer as $pl) : ?>
 
-    	<form method="post" action="<?php echo base_url('superadmin/pelanggan/update_aksi')?>">
+        <?php echo form_open_multipart('superadmin/pelanggan/input_aksi');?>
 
-   			<input type="hidden" value="<?= $kr->id_customer ?>" name="id_customer"> 		
+   			<input type="hidden" value="<?= $pl->id_customer ?>" name="id_customer"> 		
 
     		<div class="form-group">
     			<label>Nama Pelanggan</label>
@@ -42,13 +44,13 @@
             </div>
 
     		<div class="form-group">
-    			<label>Foto</label>
-    			<input type="text" name="foto" class="form-control" value="<?php echo $pl->foto?>">
-    		</div>
+                <label>Upload Foto</label>
+                <input type="file" name="foto" class="form-control" value="<?php echo $pl->foto?>">
+            </div>
 
     		<button type="submit" class="btn btn-primary">Simpan</button>
     		
-    	</form>
+    	<?php echo form_close(); ?>
 
    <?php endforeach;?>
 </div>

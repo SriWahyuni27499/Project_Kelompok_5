@@ -1,8 +1,10 @@
 <div class="container-fluid">
-    <!-- Page Heading -->
-    <div class="alert alert-success" role="alert">
-        <i class="fas fa-utensils"> </i>Pemilik Kedai
-    </div>
+   <nav class="alert alert-success" >
+
+        <center><i class="fas fa-user-friends"> </i>DATA PEMILIK KEDAI</center>
+
+</nav>
+ 
 
     <?php echo $this->session->flashdata('pesan')?>
 
@@ -16,7 +18,6 @@
             <th>USERNAME</th>
             <th>EMAIL</th>
             <th>NO. TELEPON</th>
-            <th>FOTO</th>
             <th colspan="2">AKSI</th>
         </tr>
 
@@ -30,7 +31,6 @@
             <td><?php echo $pk->username ?></td>
             <td><?php echo $pk->email ?></td>
             <td><?php echo $pk->no_telephone ?></td>
-            <td><?php echo $pk->foto ?></td>
             <td width="20px"><?php echo anchor('superadmin/pemilik_kedai/update/'.$pk->id_admin,'<div class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></div>')?></td>
             <td width="20px"><?php echo anchor('superadmin/pemilik_kedai/delete/'.$pk->id_admin,'<div class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></div>')?></td>
         </tr>

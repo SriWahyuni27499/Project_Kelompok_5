@@ -1,7 +1,9 @@
 <div class="container-fluid">
-	<div class="alert alert-success" role="alert">
-        <i class="fas fa-utensils"> </i>Update Menu
-    </div>
+<nav class="alert alert-success" >
+
+        <center><i class="fas fa-utensils"> </i>UPDATE MENU</center>
+
+</nav>
 
     <?php foreach($tb_barang as $mn) : ?>
 
@@ -37,7 +39,7 @@
     		</div>
 
     		<div class="form-group">
-    			<label>Foto</label>
+    			<label>Upload Foto</label>
     			<input type="file" name="foto" class="form-control" value="<?php echo $mn->foto?>">
     		</div>
 

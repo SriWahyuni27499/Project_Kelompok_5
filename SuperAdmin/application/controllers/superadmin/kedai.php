@@ -2,9 +2,15 @@
 
 class Kedai extends CI_Controller{
 
+	public function __construct(){
+		parent::__construct();
+		$this->load->library('upload');
+	}
+
+
 	public function index()
 	{
-		$data['kedai']  = $this->kedai_model->tampil_data()->result();
+		$data['kedai'] = $this->db->query("SELECT * FROM tb_kedai kd, tb_admin ad WHERE kd.id_admin=ad.id_admin")->result();
 		$this->load->view('templates_superadmin/header');
 		$this->load->view('templates_superadmin/sidebar');
 		$this->load->view('templates_superadmin/footer');
@@ -40,8 +46,29 @@ class Kedai extends CI_Controller{
 					'nama_kedai' => $this->input->post('nama_kedai', TRUE),
 					'pemilik' => $this->input->post('pemilik', TRUE),
 					'jam_buka' => $this->input->post('jam_buka', TRUE),
-					'foto' => $this->input->post('foto', TRUE),
 			);
+
+					$foto = $_FILES['foto']['name'];
+
+					if ($foto ==''){}else{
+						echo $_SERVER['DOCUMENT_ROOT'];
+						//$dir = str_replace("\\", "/", FCPATH);
+
+						print_r(is_dir($_SERVER['DOCUMENT_ROOT'] . '/SuperAdmin/assets/foto/kedai/'));
+						print_r(is_writable($_SERVER['DOCUMENT_ROOT'] . '/SuperAdmin/assets/foto/kedai/'));
+
+						$config['upload_path']	 = $_SERVER['DOCUMENT_ROOT'] . '/SuperAdmin/assets/foto/kedai/';
+						$config['allowed_types'] = 'jpg|png|gif|jpeg';
+
+
+						$this->upload->initialize($config);
+						if(!$this->upload->do_upload('foto')){
+							echo "Upload Gagal";
+							print_r($this->upload->display_errors()); die();
+						}else{
+							$foto=$this->upload->data('file_name');
+						}
+					}
 
 			$this->kedai_model->input_data($data);
 			$this->session->set_flashdata('pesan','<div class="alert alert-success alert-dimissible fade show" role="alert">
@@ -60,7 +87,7 @@ class Kedai extends CI_Controller{
 		$this->form_validation->set_rules('nama_kedai', 'nama_kedai', 'required', ['required' => 'Nama Kedai wajib diisi!']);
 		$this->form_validation->set_rules('pemilik', 'pemilik', 'required', ['required' => 'Nama Pemilik wajib diisi!']);
 		$this->form_validation->set_rules('jam_buka', 'jam_buka', 'required', ['required' => 'Jam Buka wajib diisi!']);
-		$this->form_validation->set_rules('foto', 'foto', 'required', ['required' => 'Foto wajib dimasukkan!']);
+		// $this->form_validation->set_rules('foto', 'foto', 'required', ['required' => 'Foto wajib dimasukkan!']);
 	}
 
 	public function update($id)
@@ -81,7 +108,18 @@ class Kedai extends CI_Controller{
 		$nama_kedai = $this->input->post('nama_kedai');
 		$pemilik = $this->input->post('pemilik');
 		$jam_buka = $this->input->post('jam_buka');
-		$foto = $this->input->post('foto');
+		$foto = $_FILES['foto'];
+		if ($foto=''){}else{
+			$config['upload_path']	 ='./assets/foto/kedai';
+			$config['allowed_types'] ='jpg|png|gif|jpeg';
+
+			$this->load->library('upload', $config);
+			if(!$this->upload->do_upload('foto')){
+				echo "Upload Gagal"; die();
+			}else{
+				$foto=$this->upload->data('file_name');
+			}
+		}
 
 		$data = array(
 				'id_admin' => $id_admin,

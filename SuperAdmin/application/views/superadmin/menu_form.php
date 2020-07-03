@@ -1,7 +1,9 @@
 <div class="container-fluid">
-	<div class="alert alert-success" role="alert">
-        <i class="fas fa-utensils"> </i>Input Menu
-    </div>
+<nav class="alert alert-success" >
+
+        <center><i class="fas fa-utensils"> </i>INPUT MENU</center>
+
+</nav>
 	
 	<?php echo form_open_multipart('superadmin/menu/input_aksi');?>
 		<div class="form-group">

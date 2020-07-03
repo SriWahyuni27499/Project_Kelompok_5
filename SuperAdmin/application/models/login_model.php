@@ -14,7 +14,7 @@ class Login_model extends CI_Model{
 		$u = $user;
 		$p = MD5($pass);
 
-		$query_cekLogin = $this->db->get_where('user', array('username' => $u, 'password' => $p));
+		$query_cekLogin = $this->db->get_where('tb_superadmin', array('username' => $u, 'password' => $p));
 
 		if (count($query_cekLogin->result()) > 0){
 			foreach ($query_cekLogin->result() as $qck){
@@ -27,7 +27,7 @@ class Login_model extends CI_Model{
 				redirect('superadmin/dashboard');
 			}
 		}else{
-			$this->session->set_flashdata('pesan', 'Username dan Password Anda Salah');
+			$this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dimissible fade show" role="alert"> Username atau Password Salah! <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button></div>');
 			redirect('superadmin/auth');
 		}
 	}
