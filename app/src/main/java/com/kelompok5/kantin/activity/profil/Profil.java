@@ -20,6 +20,7 @@ import com.kelompok5.kantin.activity.beranda.Beranda;
 
 
 import org.jetbrains.annotations.NotNull;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -30,6 +31,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import io.grpc.internal.IoUtils;
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -39,7 +41,7 @@ import okhttp3.Response;
 public class Profil extends AppCompatActivity {
 
     protected Cursor cursor;
-    TextView user,namae,nohpmu,alamate,emaile;
+    TextView user,namae,nohpmu,alamate,emaile,hitungan;
     Button metu,rubahen;
     CircleImageView imgUpload;
 
@@ -54,6 +56,7 @@ public class Profil extends AppCompatActivity {
         alamate = (TextView) findViewById(R.id.alamat);
         emaile = (TextView) findViewById(R.id.email);
         nohpmu = (TextView) findViewById(R.id.notepon);
+        hitungan = (TextView) findViewById(R.id.count);
 
         metu = (Button) findViewById(R.id.keluar);
         rubahen = (Button) findViewById(R.id.ubah);
@@ -81,7 +84,7 @@ public class Profil extends AppCompatActivity {
                                             .addFormDataPart("username", userString)
                                             .build();
                 OkHttpClient okHttpClient = new OkHttpClient();
-                Request request = new Request.Builder().url("http://66.42.60.70/tanco/driver_info").post(reqBody).build();
+                Request request = new Request.Builder().url("http://172.17.100.2/kantin/driver_info").post(reqBody).build();
                 okHttpClient.newCall(request).enqueue(new Callback() {
                     @Override
                     public void onFailure(@NotNull Call call, @NotNull IOException e) {
@@ -107,7 +110,7 @@ public class Profil extends AppCompatActivity {
                                         }finally{
                                             try{
                                                 OkHttpClient newClient = new OkHttpClient();
-                                                Request req = new Request.Builder().url("http://66.42.60.70/tanco/assets/fotoprofil/"+userString+"/"+userString+".jpg").build();
+                                                Request req = new Request.Builder().url("http://172.17.100.2/kantin/assets/"+userString+"/"+userString+".png").build();
                                                 newClient.newCall(req).enqueue(new Callback() {
                                                     @Override
                                                     public void onFailure(@NotNull Call call, @NotNull IOException e) {
@@ -135,6 +138,51 @@ public class Profil extends AppCompatActivity {
                                                 });
                                             }catch(Exception e){
                                                 e.printStackTrace();
+                                            }finally {
+                                                try {
+                                                    SharedPreferences username = getSharedPreferences("login", MODE_PRIVATE);
+                                                    String userString = username.getString("username", "");
+
+                                                    JSONObject jsonObject = new JSONObject();
+
+                                                    try {
+                                                        jsonObject.put("username", userString);
+                                                    }catch (Exception e){
+
+                                                    }
+
+                                                    OkHttpClient client = new OkHttpClient();
+                                                    RequestBody req = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonObject.toString());
+
+                                                    Request reqq = new Request.Builder().url("http://172.17.100.2/kantin/count").post(req).build();
+
+                                                    client.newCall(reqq).enqueue(new Callback() {
+                                                        @Override
+                                                        public void onFailure(@NotNull Call call, @NotNull IOException e) {
+
+                                                        }
+
+                                                        @Override
+                                                        public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                                                            try{
+                                                                JSONObject jsonObject = new JSONObject(response.body().string());
+                                                                JSONArray jsonArray = jsonObject.getJSONArray("data");
+                                                                final String hitungannya = jsonArray.getJSONObject(0).get("jumlah").toString();
+                                                                runOnUiThread(new Runnable() {
+                                                                    @Override
+                                                                    public void run() {
+                                                                        hitungan.setText(hitungannya + " Pesanan");
+                                                                    }
+                                                                });
+                                                            }catch (Exception e){
+
+                                                            }
+                                                        }
+                                                    });
+
+                                                }catch (Exception e){
+
+                                                }
                                             }
                                         }
                                     }

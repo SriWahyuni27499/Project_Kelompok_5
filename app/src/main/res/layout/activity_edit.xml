@@ -60,8 +60,8 @@
 
             <TextView
                 android:id="@+id/editviewusername"
-                android:hint="Nama Lengkap"
-                android:layout_width="wrap_content"
+                android:layout_width="298dp"
+                android:hint="NIM"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:paddingLeft="20dp"
@@ -89,15 +89,12 @@
 
             <EditText
                 android:id="@+id/editpassword"
-                android:hint="Kata Sandi"
-                android:layout_width="wrap_content"
+                android:layout_width="298dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:paddingLeft="20dp"
-                android:paddingTop="20dp"
+                android:hint="Kata Sandi"
                 android:maxLength="20"
-                android:inputType="textPassword"
-                android:textStyle="bold" />
+                android:paddingLeft="20dp"
+                />
         </LinearLayout>
 
 
@@ -122,14 +119,14 @@
 
             <EditText
                 android:id="@+id/editnama"
-                android:hint="Nama Lengkap"
-                android:layout_width="wrap_content"
+                android:layout_width="298dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:paddingLeft="20dp"
-                android:paddingTop="20dp"
+                android:hint="Nama Lengkap"
+                android:inputType="text"
                 android:maxLength="30"
-                android:inputType="text"/>
+                android:paddingLeft="20dp"
+                android:paddingTop="20dp" />
         </LinearLayout>
     </LinearLayout>
     //alamat
@@ -151,14 +148,14 @@
 
             <EditText
                 android:id="@+id/editalamat"
-                android:hint="alamat"
-                android:layout_width="wrap_content"
+                android:layout_width="298dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:paddingLeft="20dp"
-                android:paddingTop="20dp"
+                android:hint="alamat"
+                android:inputType="text"
                 android:maxLength="50"
-                android:inputType="text" />
+                android:paddingLeft="20dp"
+                android:paddingTop="20dp" />
         </LinearLayout>
 
     </LinearLayout>
@@ -182,7 +179,7 @@
             <EditText
                 android:id="@+id/editemail"
                 android:hint="Email"
-                android:layout_width="wrap_content"
+                android:layout_width="298dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:paddingLeft="20dp"
@@ -213,7 +210,7 @@
                 <EditText
                     android:id="@+id/edittele"
                     android:hint="telepon"
-                    android:layout_width="wrap_content"
+                    android:layout_width="298dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:paddingLeft="20dp"
@@ -235,7 +232,7 @@
         android:layout_marginTop="5dp">
         <LinearLayout
             android:orientation="horizontal"
-            android:paddingLeft="25dp"
+            android:paddingLeft="60dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 

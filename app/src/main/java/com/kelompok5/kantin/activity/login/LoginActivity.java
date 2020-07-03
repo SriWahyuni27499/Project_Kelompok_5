@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
+import android.text.InputFilter;
 import android.text.Spanned;
 import android.view.View;
 import android.widget.Button;
@@ -64,6 +65,7 @@ public class LoginActivity extends AppCompatActivity {
         editTextUname = findViewById(R.id.editTextNim);
         editTextSandi = findViewById(R.id.editTextSandi);
         buttonLogin = findViewById(R.id.buttonLogin);
+        editTextUname.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
 
         /*
             Start
@@ -207,7 +209,7 @@ public class LoginActivity extends AppCompatActivity {
     //iki tulisane seng tombol registere
     private void initCreateAccountTextView() {
         TextView textViewCreateAccount = (TextView) findViewById(R.id.textViewCreateAccount);
-        textViewCreateAccount.setText(fromHtml("<font color='#0c0099'>Saya tidak punya akun. </font><font color='#0c0099'>Buat akun</font>"));
+        textViewCreateAccount.setText(fromHtml("<font color='#504F4E'>Saya tidak punya akun. </font><font color='#0c0099'>Buat akun</font>"));
         textViewCreateAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -230,7 +232,7 @@ public class LoginActivity extends AppCompatActivity {
     //iki tulisane seng tombol registere
     private void direcwhats() {
         TextView textViewCreateAccount = (TextView) findViewById(R.id.directwa);
-        textViewCreateAccount.setText(fromHtml("<font color='#0c0099'> Lupa Username atau Sandi? </font>"));
+        textViewCreateAccount.setText(fromHtml("<font color='#0c0099'> Lupa NIM atau kata sandi? </font>"));
         textViewCreateAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

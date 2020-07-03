@@ -18,6 +18,8 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
@@ -80,146 +82,198 @@ public class RegisterActivity extends AppCompatActivity {
         f = (EditText) findViewById(R.id.editTextemail);
         g = (EditText) findViewById(R.id.editTextTelepon);
 
+        d.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
+        InputFilter letterFilter = new InputFilter() {
+            public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+                String filtered = "";
+                for (int i = start; i < end; i++) {
+                    char character = source.charAt(i);
+                    if (!Character.isWhitespace(character)&&Character.isLetter(character)) {
+                        filtered += character;
+                    }
+                }
+
+                return filtered;
+            }
+
+        };
+        b.setFilters(new InputFilter[]{letterFilter});
+
 
         Bdaftar = (Button) findViewById(R.id.buttonDaftar);
         Bkembali = (TextView) findViewById(R.id.textViewKembali);
         uupload = findViewById(R.id.uploadfoto);
 
         uupload.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                                       @Override
+                                       public void onClick(View v) {
 
-                Intent intent = new Intent(Intent.ACTION_PICK,
-                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(intent, 0);
-            }
+                                           new AlertDialog.Builder(RegisterActivity.this).setTitle("Costumer Service").setMessage("Akan sulit untuk mengubah foto profil anda untuk kedua kalinya. Harap memilih foto formal!")
+                                                   .setNegativeButton("Lanjutkan", new DialogInterface.OnClickListener() {
+                                                       @Override
+                                                       public void onClick(DialogInterface dialog, int which) {
+                                                           Intent intent = new Intent(Intent.ACTION_PICK,
+                                                                   android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                                                           startActivityForResult(intent, 0);
+
+                                                       }
+                                                   })
+                                                   .setPositiveButton("Kembali", new DialogInterface.OnClickListener() {
+                                                       @Override
+                                                       public void onClick(DialogInterface dialog, int which) {
+
+                                                       }
+                                                   }).show();
+
+
+                                       };
+
+
+
         });
 
 
         Bdaftar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                username = d.getText().toString();
-
                 if (b.getText().toString().length() == 0) {
                     //jika form Email belum di isi / masih kosong
-                    b.setError("Email diperlukan!");
+                    b.setError("Harap mengisi Nama Lengkap anda!");
                 } else if (c.getText().toString().length() == 0) {
                     //jika form Username belum di isi / masih kosong
-                    c.setError("Username diperlukan!");
+                    c.setError("Harap mengisi Alamat anda!");
                 } else if (d.getText().toString().length() == 0) {
                     //jika form Passwrod belum di isi / masih kosong
-                    d.setError("Password diperlukan!");
+                    d.setError("Harap mengisi NIM anda!");
                 } else if (e.getText().toString().length() == 0) {
                     //jika form Passwrod belum di isi / masih kosong
-                    e.setError("Password diperlukan!");
+                    e.setError("Harap mengisi Kata Sandi anda!");
                 } else if (f.getText().toString().length() == 0) {
                     //jika form Passwrod belum di isi / masih kosong
-                    f.setError("Password diperlukan!");
+                    f.setError("Harap mengisi Emai anda!");
                 } else if (g.getText().toString().length() == 0) {
                     //jika form Passwrod belum di isi / masih kosong
-                    g.setError("Password diperlukan!");
-                } else {  //IKI LEWAT FIREBASE(sementara gae API iki)
-                    boolean x = true;
-                    try {
-                        OkHttpClient client = new OkHttpClient();
-                        RequestBody reqBody = new MultipartBody.Builder()
-                                .setType(MultipartBody.FORM)
-                                .addFormDataPart("nama_driver", b.getText().toString())
-                                .addFormDataPart("alamat", c.getText().toString())
-                                .addFormDataPart("username", d.getText().toString())
-                                .addFormDataPart("password", e.getText().toString())
-                                .addFormDataPart("email", f.getText().toString())
-                                .addFormDataPart("no_telephone", g.getText().toString())
-                                .addFormDataPart("foto", "null")
-                                .build();
-                        Request request = new Request.Builder().url("http://172.17.100.2/kantin/driver").post(reqBody).build();
+                    g.setError("Harap mengisi No. Telepon anda!");
+                } else {
 
-                        //db.insertOrThrow("tb_driver", null, dataForm);
-                        client.newCall(request).enqueue(new Callback() {
+                new AlertDialog.Builder(RegisterActivity.this).setTitle("Costumer Service").setMessage("Apakah data yang anda masukkan sudah valid? tekan OK untuk melanjutkan")
+                        .setNegativeButton("OK", new DialogInterface.OnClickListener() {
                             @Override
-                            public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                                RegisterActivity.this.runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        AlertDialog.Builder alig = new AlertDialog.Builder(RegisterActivity.this);
-                                        alig.setMessage("Gagal mendaftarkan akun").setTitle("Gagal").show();
-                                    }
-                                });
-                            }
-
-                            @Override
-                            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-
-                                if (response.code()==400){
-                                    runOnUiThread(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            AlertDialog.Builder abi = new AlertDialog.Builder(RegisterActivity.this);
-                                            abi.setTitle("Admin");
-                                            abi.setMessage("p");
-                                            abi.setNegativeButton("ok", new DialogInterface.OnClickListener() {
-                                                @Override
-                                                public void onClick(DialogInterface dialog, int which) {
-                                                    dialog.dismiss();
-                                                }
-                                            });
-                                            abi.show();
-                                        }
-                                    });
-
-                                    return;
-
-                                }
+                            public void onClick(DialogInterface dialog, int which) {
 
 
-                                if (intents != null && rescode == 0) {
-                                    if (resStat == RESULT_OK) {
-                                        Uri targetUri = intents.getData();
-                                        Bitmap bitmap;
-                                        try {
-                                            bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(targetUri));
-                                            Bitmap resizedBitmap = Bitmap.createScaledBitmap(bitmap, 500, 500, false);
-                                            image = ConvertBitmapToString(resizedBitmap);
+                                username = d.getText().toString();
 
-                                            Upload();
+                                  //IKI LEWAT FIREBASE(sementara gae API iki)
+                                    boolean x = true;
+                                    try {
+                                        OkHttpClient client = new OkHttpClient();
+                                        RequestBody reqBody = new MultipartBody.Builder()
+                                                .setType(MultipartBody.FORM)
+                                                .addFormDataPart("nama_driver", b.getText().toString())
+                                                .addFormDataPart("alamat", c.getText().toString())
+                                                .addFormDataPart("username", d.getText().toString())
+                                                .addFormDataPart("password", e.getText().toString())
+                                                .addFormDataPart("email", f.getText().toString())
+                                                .addFormDataPart("no_telephone", g.getText().toString())
+                                                .addFormDataPart("foto", "null")
+                                                .build();
+                                        Request request = new Request.Builder().url("http://172.17.100.2/kantin/driver").post(reqBody).build();
 
-                                        } catch (FileNotFoundException e) {
-                                            // TODO Auto-generated catch block
-                                            e.printStackTrace();
-                                        }
-                                    }
-                                }
-
-
-                                RegisterActivity.this.runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        AlertDialog.Builder alig = new AlertDialog.Builder(RegisterActivity.this);
-                                        alig.setMessage("Berhasil mendaftarkan akun").setTitle("Sukses").setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                        //db.insertOrThrow("tb_driver", null, dataForm);
+                                        client.newCall(request).enqueue(new Callback() {
                                             @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                                                startActivity(intent);
+                                            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                                                RegisterActivity.this.runOnUiThread(new Runnable() {
+                                                    @Override
+                                                    public void run() {
+                                                        AlertDialog.Builder alig = new AlertDialog.Builder(RegisterActivity.this);
+                                                        alig.setMessage("Gagal mendaftarkan akun").setTitle("Gagal").show();
+                                                    }
+                                                });
                                             }
-                                        }).show();
+
+                                            @Override
+                                            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+
+                                                if (response.code()==400){
+                                                    runOnUiThread(new Runnable() {
+                                                        @Override
+                                                        public void run() {
+                                                            AlertDialog.Builder abi = new AlertDialog.Builder(RegisterActivity.this);
+                                                            abi.setTitle("Admin");
+                                                            abi.setMessage("p");
+                                                            abi.setNegativeButton("ok", new DialogInterface.OnClickListener() {
+                                                                @Override
+                                                                public void onClick(DialogInterface dialog, int which) {
+                                                                    dialog.dismiss();
+                                                                }
+                                                            });
+                                                            abi.show();
+                                                        }
+                                                    });
+
+                                                    return;
+
+                                                }
+
+
+                                                if (intents != null && rescode == 0) {
+                                                    if (resStat == RESULT_OK) {
+                                                        Uri targetUri = intents.getData();
+                                                        Bitmap bitmap;
+                                                        try {
+                                                            bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(targetUri));
+                                                            Bitmap resizedBitmap = Bitmap.createScaledBitmap(bitmap, 500, 500, false);
+                                                            image = ConvertBitmapToString(resizedBitmap);
+
+                                                            Upload();
+
+                                                        } catch (FileNotFoundException e) {
+                                                            // TODO Auto-generated catch block
+                                                            e.printStackTrace();
+                                                        }
+                                                    }
+                                                }
+
+
+                                                RegisterActivity.this.runOnUiThread(new Runnable() {
+                                                    @Override
+                                                    public void run() {
+                                                        AlertDialog.Builder alig = new AlertDialog.Builder(RegisterActivity.this);
+                                                        alig.setMessage("Berhasil mendaftarkan akun").setTitle("Sukses").setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                                            @Override
+                                                            public void onClick(DialogInterface dialog, int which) {
+                                                                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                                                                startActivity(intent);
+                                                            }
+                                                        }).show();
+                                                    }
+                                                });
+
+                                            }
+                                        });
+
+                                    } catch (Exception e) {
+                                        Toast.makeText(RegisterActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                                        x = false;
+                                        System.out.print(e.getMessage());
+                                    } finally {
+                                        if (x) {
+                                            Toast.makeText(RegisterActivity.this, "Selesai mendaftar", Toast.LENGTH_LONG).show();
+                                        }
+                                        //       }
                                     }
-                                });
+                            }
+                        })
+                        .setPositiveButton("Cek Kembali", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
 
                             }
-                        });
+                        }).show();
+                                }
 
-                    } catch (Exception e) {
-                        Toast.makeText(RegisterActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
-                        x = false;
-                        System.out.print(e.getMessage());
-                    } finally {
-                        if (x) {
-                            Toast.makeText(RegisterActivity.this, "Selesai mendaftar", Toast.LENGTH_LONG).show();
-                        }
-                        //       }
-                    }
-                }
             }
 
 

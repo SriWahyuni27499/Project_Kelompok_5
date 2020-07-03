@@ -75,10 +75,11 @@
 
                             //iki tulisan pencapaiaane piro
                             <TextView
+                                android:id="@+id/count"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingTop="10dp"
-                                android:text="73 Pesanan"
+                                android:text="2 Pesanan"
                                 android:textColor="@color/startblue"
                                 android:textSize="20sp"
                                 android:textStyle="bold" />
@@ -236,7 +237,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Edit"/>
+                android:text="Ubah"/>
 
             //button kembai
             <Button

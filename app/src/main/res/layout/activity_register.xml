@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:maxLength="30"
                 android:hint="@string/nama_lengkap"
-                android:inputType="textCapCharacters"
+                android:inputType="text"
                 android:textAllCaps="true"/>
         </com.google.android.material.textfield.TextInputLayout>
         //iki alamate
@@ -54,7 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:maxLength="50"
-                android:hint="alamat"
+                android:hint="Alamat"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
         //ikiNIM
@@ -142,17 +142,7 @@
                     android:id="@+id/uploadfoto"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Upload" />
-
-                <EditText
-                    android:id="@+id/uploadfotoberhasil"
-                    android:layout_width="291dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:hint="Upload Foto"
-                    android:paddingLeft="20dp"
-                    android:paddingTop="20dp"
-                    android:textStyle="bold" />
+                    android:text="Unggah Foto Profil" />
             </LinearLayout>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -176,7 +166,7 @@
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:text="@string/kembali"
-            android:textColor="@android:color/white" />
+            android:textColor="#504F4E"/>
     </LinearLayout>
 
 </ScrollView>

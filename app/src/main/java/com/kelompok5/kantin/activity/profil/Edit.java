@@ -13,6 +13,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
@@ -134,7 +136,7 @@ public class Edit extends AppCompatActivity {
                         .addFormDataPart("username", userString)
                         .build();
                 final OkHttpClient okHttpClient = new OkHttpClient();
-                Request request = new Request.Builder().url("http://66.42.60.70/tanco/driver_info").post(reqBody).build();
+                Request request = new Request.Builder().url("http://172.17.100.2/kantin/driver_info").post(reqBody).build();
                 okHttpClient.newCall(request).enqueue(new Callback() {
                     @Override
                     public void onFailure(@NotNull Call call, @NotNull IOException e) {
@@ -160,39 +162,7 @@ public class Edit extends AppCompatActivity {
                                         }catch (Exception e){
                                             e.printStackTrace();
                                         }
-//                                        finally{
-//                                            try{
-//                                                OkHttpClient newClient = new OkHttpClient();
-//                                                Request req = new Request.Builder().url("http://172.17.100.2/kantin/assets/fotoprofil/"+userString+"/"+userString+".jpg").build();
-//                                                newClient.newCall(req).enqueue(new Callback() {
-//                                                    @Override
-//                                                    public void onFailure(@NotNull Call call, @NotNull IOException e) {
-//                                                        e.printStackTrace();
-//                                                    }
 //
-//                                                    @Override
-//                                                    public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-//                                                        if(response.isSuccessful()){
-//                                                            if(response.body().contentLength() != 0){
-//                                                                InputStream in = response.body().byteStream();
-//                                                                byte[] gambar = IoUtils.toByteArray(in);
-//                                                                final Bitmap decodedByte = BitmapFactory.decodeByteArray(gambar, 0, gambar.length);
-//                                                                runOnUiThread(new Runnable() {
-//                                                                    @Override
-//                                                                    public void run() {
-//                                                                        imgUpload.setImageBitmap(decodedByte);
-//                                                                    }
-//                                                                });
-//                                                            }
-//                                                        }else{
-//                                                            System.out.println(response.body());
-//                                                        }
-//                                                    }
-//                                                });
-//                                            }catch(Exception e){
-//                                                e.printStackTrace();
-//                                            }
-//                                        }
                                     }
                                 });
                             }catch (JSONException e){
@@ -266,7 +236,7 @@ public class Edit extends AppCompatActivity {
 
                                         RequestBody reqBody = RequestBody.create(jsonObject.toString(), MediaType.parse("application/json; charset=utf-8"));
                                         OkHttpClient okHttpClient = new OkHttpClient();
-                                        Request request = new Request.Builder().url("http://66.42.60.70/tanco/driver").put(reqBody).build();
+                                        Request request = new Request.Builder().url("http://172.17.100.2/kantin/driver").put(reqBody).build();
                                         okHttpClient.newCall(request).enqueue(new Callback() {
                                             @Override
                                             public void onFailure(@NotNull Call call, @NotNull IOException e) {
