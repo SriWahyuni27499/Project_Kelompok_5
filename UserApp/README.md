@@ -11,3 +11,6 @@ Sudah membuat API tapi masih belum update hostingan dan masih beberapa.
 MAPS tidak dihubungkan karena eror dan sering force closed
 
 Link Branch :https://github.com/SriWahyuni27499/Project_Kelompok_5/tree/Shandy
+
+Login style by uigitdev
+Firebase & Menu By YUmmy
